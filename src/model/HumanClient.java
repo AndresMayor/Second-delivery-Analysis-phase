@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 
 public class HumanClient{
 
@@ -15,7 +16,7 @@ public class HumanClient{
 
 //Relations
 
-	private Mascot[] mascots;
+	private ArrayList<Mascot> mascots;
 
 
 //Metodo Constructor
@@ -25,7 +26,7 @@ public class HumanClient{
 		this.iD=iD;
 		this.address=address;
 		this.telePhone=telePhone;
-		mascots = new Mascot[5];
+		mascots = new ArrayList<Mascot>();
 	}
 
 
@@ -64,10 +65,10 @@ public class HumanClient{
 	}
 
 
-	public Mascot[] getMascots(){
+	public ArrayList<Mascot> getMascots(){
 		return mascots;
 	}
-	public void setMascots(Mascot[] mascots){
+	public void setMascots(ArrayList<Mascot> mascots){
 		this.mascots=mascots;
 
 	}
