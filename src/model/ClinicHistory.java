@@ -26,6 +26,7 @@ public class ClinicHistory{
     	this.datas=datas;
     	this.admissionDate=admissionDate;
     	this.exitDate=exitDate;
+        medicines = new ArrayList<Medicine>();
     }
 
 
@@ -86,6 +87,9 @@ public class ClinicHistory{
     }
     public void setDatas(Mascot datas){
     	this.datas=datas;
+    }
+    public void addMedicines(Medicine medicine1){
+        medicines.add(medicine1);
     }
 
 

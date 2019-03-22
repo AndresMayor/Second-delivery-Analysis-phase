@@ -55,5 +55,37 @@ public void setClients(ArrayList<HumanClient> clients){
 
 
 
+public void addHistorys(ClinicHistory history1){
+    histories.add(history1);
+}
+
+
+public void addClients(HumanClient client1){
+		clients.add(client1);
+}
+
+public boolean findCustomer(String iD){
+		boolean foundClient= false;
+		for(int i = 0; !foundClient && i < clients.size(); i++){
+			if(iD.equals(clients.get(i).getID())){
+				foundClient = true;
+				}
+		}
+		return foundClient;
+}
+public String namesMascots(String iD){
+		String message = "";
+		boolean foundClient = false;
+		if(findCustomer(iD) == true){
+			for(int i = 0; !foundClient && i < clients.size(); i++){
+				if(iD.equals(clients.get(i).getID())){
+					message = clients.get(i).nameMascots();
+					foundClient = true;
+				}
+			}
+		}
+		return message;
+}
+
 
 }

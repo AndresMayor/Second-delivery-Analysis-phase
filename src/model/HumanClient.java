@@ -9,7 +9,7 @@ public class HumanClient{
 
 
 	private String name;
-	private int iD;
+	private String iD;
 	private String address;
 	private String telePhone;
 
@@ -21,7 +21,7 @@ public class HumanClient{
 
 //Metodo Constructor
 
-	public HumanClient(String name,int iD,String address,String telePhone){
+	public HumanClient(String name,String iD,String address,String telePhone){
 		this.name=name;
 		this.iD=iD;
 		this.address=address;
@@ -41,10 +41,10 @@ public class HumanClient{
 
 
 
-	public int getID(){
+	public String getID(){
 		return iD;
 	}
-	public void setID(int iD){
+	public void setID(String iD){
 		this.iD=iD;
 	}
 
@@ -72,6 +72,26 @@ public class HumanClient{
 		this.mascots=mascots;
 
 	}
+
+	//agg Mascot
+	public void addMascots(Mascot  mascots1){
+		mascots.add(mascots1);
+	}
+
+	//
+	public String nameMascots(){
+		String msg = "";
+		int position = 1;
+		for(int i = 0; i < mascots.size(); i++){
+			msg += position+". "+mascots.get(i).getName()+"\n";
+		}
+		return msg;
+	}
+
+
+
+
+
 
 }
 

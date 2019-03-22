@@ -22,7 +22,7 @@ public class Main{
 		reader = new Scanner(System.in);
 	} 
 
-	public static void Main(String [] args){
+	public static void main(String[] args){
 		Main m = new Main();
 		m.menu();
 		m.showMenu();
@@ -56,11 +56,74 @@ public class Main{
 
 
 			if(userInput==1){
+	    System.out.println("Client name:");
+		String theName = reader.nextLine();
+		System.out.println("Client  iD:");
+		String theiD = reader.nextLine();
+		System.out.println("Client address:");
+		String theAddress = reader.nextLine();
+		System.out.println("Client  cell:");
+		String theTelePhone = reader.nextLine();
+		HumanClient clientPrincipal = new HumanClient(theName, theiD, theAddress, theTelePhone);
+		System.out.println("How many pets does the client have?:");
+		int quantityPets = reader.nextInt();
+		reader.nextLine();
+		 for(int i = 0; i < quantityPets; i++){
+  System.out.println("...........................................................................");
+
+			System.out.println("Mascot "+(i+1)+":");
+
+
+			System.out.println("Mascot name:");
+			String mascotName = reader.nextLine();
+
+
+			System.out.println("Mascot weight:");
+			double mascotWeight = reader.nextDouble();
+			reader.nextLine();
+
+
+			System.out.println("Mascot age:");
+			int mascotAge = reader.nextInt();
+			reader.nextLine();
+
+			System.out.println("Mascot type(G for cat, P for dog, A for bird, O for others):");
+			char mascotType = reader.next().charAt(0);
+
+
+			
+
+			//public Mascot(String name,double weight,int age,char type,HumanClient owner){
+
+			Mascot mascotPrincipal = new Mascot(mascotName, mascotWeight, mascotAge, mascotType, clientPrincipal);
+
+			clientPrincipal.addMascots(mascotPrincipal);
+		}
+
+		/* ojo*/myLittlePet.addClients(clientPrincipal);
+
+		System.out.println("The client was added successfully");
+	}
 
 
 
+
+			
+		else if(userInput==2){
+			int error = 0;
+		    while (error == 0){
+			System.out.println("owner's identifier:");
+			String theID = reader.nextLine();
+			if(myLittlePet.findCustomer(theID) == true){
+			System.out.println("¿What pet do you want to hospitalize?");
+			System.out.println(myLittlePet.namesMascots(theID));
+			int option = reader.nextInt();
+			error = 1;
 			}
-			else if(userInput==2){
+			else{
+			System.out.println("The client wasn't finded, please enter the identifier again");
+			}
+		}
 
 
 
@@ -126,15 +189,25 @@ public class Main{
 
 
 public void showOptions(){
-  System.out.println("please type the option you want to review.");
-  System.out.println("1. ");
-  System.out.println("2. ");
+  System.out.println("---------------------------------------------------------------------------");
+  System.out.println("PLEASE TYPE THE OPTION YOU WANT TO REVIEW.");
+  System.out.println("                                                                          |");
+  System.out.println("1.Register Client and Pet.\n ");
+  System.out.println("                                                                          |");
+  System.out.println("2.Hospitalize the pet.\n");
+  System.out.println("                                                                          |");
   System.out.println("3. ");
+  System.out.println("                                                                          |");
   System.out.println("4. ");
+  System.out.println("                                                                          |");
   System.out.println("5. ");
+  System.out.println("                                                                          |");
   System.out.println("6. ");
+  System.out.println("                                                                          |");
   System.out.println("7. ");
+  System.out.println("                                                                          |");
   System.out.println("8. ");
+  System.out.println("---------------------------------------------------------------------------");
 
 
 }
@@ -144,10 +217,10 @@ public void init(){
 
 
 
-//	public HumanClient(String name,int iD,String address,String telePhone){
+//	public HumanClient(String name,String iD,String address,String telePhone){
 
-HumanClient client1 = new HumanClient("Andres",122,"Cra 33a #29-56","3237985");
-HumanClient client2 = new HumanClient("Richard",123,"Cra 33a #29-47","3213211");
+HumanClient client1 = new HumanClient("Andres","122","Cra 33a #29-56","3237985");
+HumanClient client2 = new HumanClient("Richard","123","Cra 33a #29-47","3213211");
 //public Mascot(String name,double weight,int age,char type,HumanClient owner){
 
 Mascot mascot1 = new Mascot("Bonny",20.0,3,'G',client1);
@@ -179,11 +252,10 @@ Medicine medicine4 = new Medicine("Drontal",10.0,8.000,9.0);
 ClinicHistory history1 = new ClinicHistory(true,"the animal is itchy","Critical",mascot1, admissionDate1, exitDate1);
 ClinicHistory history2 = new ClinicHistory(true,"the animal is fever ","low risk",mascot2,admissionDate2,exitDate2);
 ClinicHistory history3 = new ClinicHistory(true, "the animal is infecte bite","Critical",mascot3,admissionDate3,null);
-history1.getMedicines().add(medicine1);
-history1.getMedicines().add(medicine2);
-history2.getMedicines().add(medicine3);
-history3.getMedicines().add(medicine4);
-
+history1.addMedicines(medicine1);
+history1.addMedicines(medicine2);
+history2.addMedicines(medicine3);
+history3.addMedicines(medicine4);
 
 //Status Minirooms
 
@@ -196,8 +268,9 @@ Miniroom room6 = new Miniroom(false,6,null);
 Miniroom room7 = new Miniroom(true,7,history1);
 Miniroom room8 = new Miniroom(true,8,history2);
 Miniroom[] rooms = {room1,room2,room3,room4,room5,room6,room7,room8};
+
 Veterinary myLittlePet = new Veterinary();
-		myLittlePet.setRooms(rooms);
+     	myLittlePet.setRooms(rooms);
 		myLittlePet.getHistories().add(history1);
 		myLittlePet.getHistories().add(history2);
         myLittlePet.getHistories().add(history3);
