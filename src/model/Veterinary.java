@@ -1,3 +1,10 @@
+/** | Name :Andrés Mayor Aldana    |
+    | Algoritmos y Programacion    |
+    | Univesidad Icesi             |
+    | A00359333                    |
+    | Camilo Barrios               |
+    | Laboratorio 3                |    
+**/
 package model;
 import java.util.ArrayList;
 
@@ -64,6 +71,9 @@ public void addClients(HumanClient client1){
 		clients.add(client1);
 }
 
+
+
+
 public boolean findCustomer(String iD){
 		boolean foundClient= false;
 		for(int i = 0; !foundClient && i < clients.size(); i++){
@@ -73,6 +83,9 @@ public boolean findCustomer(String iD){
 		}
 		return foundClient;
 }
+
+
+
 public String namesMascots(String iD){
 		String message = "";
 		boolean foundClient = false;
@@ -86,6 +99,142 @@ public String namesMascots(String iD){
 		}
 		return message;
 }
+
+
+  public String addPetToAvailableRoom (Mascot current){
+
+    String msg = "";
+    boolean found = false;
+
+    for(int i =0; i< rooms.length && !found; i++){
+
+      if(rooms[i].getAvailability()){
+        found = true;
+        rooms[i].getHistory().setDatas(current);
+        rooms[i].setAvailability(false);
+
+        msg = "Se agrego exitosamente a "+current.getNamePet()+" en el cuarto " + (i+1);
+      }
+    }
+    if(!found){
+      msg = "No se pudo hospitalizar porque no se encontro un cuarto vacio.";
+    }
+
+    return msg;
+  }
+
+
+
+public String hospitalize(String idclient, String nameMascot){
+
+  String msg = "";
+  Mascot andy = null;
+  for(int i =0; i<clients.size() && andy==null; i++){
+    if(clients.get(i).getID() == idclient){
+        andy = clients.get(i).findPet(nameMascot);
+        if(andy==null){
+          msg = "El cliente no tiene una mascota con ese nombre";
+        }
+    }
+  }
+ if(andy!=null){
+  msg = addPetToAvailableRoom(andy);
+ }
+
+  return msg;
+}
+
+
+
+
+public boolean avaibleRoom(){
+boolean f = false;
+
+for(int i = 0; i < rooms.length; i++){
+  if(rooms[i].getAvailability()){
+   f = true;
+ }
+
+}
+  return f;
+}
+
+
+
+public String calculatedPay(int actualDay, int actualMonth, int actualYear){
+  String msj = "";
+ for(int i=0; i < histories.size(); i++){
+
+    msj += histories.get(i).costOfHospitalizate(actualDay, actualMonth, actualYear);
+
+ }
+ return msj;
+}
+
+
+
+//nn
+
+public String showClients(){
+  String msj = "";
+  msj += clients.size();
+   for(int i = 0 ; i<clients.size(); i++){
+     msj +=  (i+1) + clients.get(i).infoClient();
+  }
+  return msj;
+
+
+
+}
+public String darAlta(Mascot mascotsNames){
+ boolean recorrido = false;
+ String msj = "";
+    for(int i = 0; i < rooms.length && !recorrido; i++){
+      if(!rooms[i].getAvailability()){
+        if(rooms[i].getHistory().getDatas().equals(mascotsNames)){
+          rooms[i].getHistory().setDatas(null);
+          recorrido= true;
+          rooms[i].setAvailability(true);
+          msj = "Se saco el animalito del cuarto";
+        }
+      }
+      else{
+        msj = "No se encontro su animal hospitalizado";
+      }
+    }
+    return msj;
+  }
+
+
+public String findToHospitalize(String idClientt, String nampe){
+  String msg = "";
+  Mascot andy = null;
+  for(int i =0; i<clients.size() && andy==null; i++){
+    if(idClientt == clients.get(i).getID()){
+        andy = clients.get(i).findPet(nampe);
+        if(andy==null){
+          msg = "El cliente no tiene una mascota con ese nombre";
+        }
+      }
+  }
+ if(andy != null){
+  msg = darAlta(andy);
+ }
+
+  return msg;
+}
+
+
+
+public String showRooms(){
+  String msj="";
+  for (int i =0; i <rooms.length;i++){
+    msj+=rooms[i].showRoomInformation();
+  }
+  return msj;
+}
+
+
 
 
 }

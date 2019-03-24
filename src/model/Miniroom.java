@@ -7,7 +7,7 @@ public class Miniroom{
 
 	private boolean availability;
 	private int numMiniroom;
-
+    
 
 //Relations 
 
@@ -38,7 +38,6 @@ public void setAvailability(boolean availability){
 }
 
 
-
 public ClinicHistory getHistory(){
 	return history;
 }
@@ -51,10 +50,16 @@ public void setHistory(ClinicHistory history){
 public int getNumMiniroom(){
 	return numMiniroom;
 }
-public void setNumminiRoom(int numMiniroom){
- this.numMiniroom=numMiniroom;
+
+
+public String showRoomInformation(){
+	String msj ="";
+
+	msj +="````````````````````````````````````````````````````````\n";
+	msj += "Si esta ocupado :\n 1. True Y si no esta ocupado 2. False: "+""+availability+"\n";
+    msj += "El numero del mini cuarto es :"+numMiniroom+"\n";
+    msj +="````````````````````````````````````````````````````````\n";
+return msj;
 }
-
-
 
 }

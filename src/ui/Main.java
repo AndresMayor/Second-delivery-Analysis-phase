@@ -1,3 +1,13 @@
+
+/** | Name :Andrés Mayor Aldana    |
+    | Algoritmos y Programacion    |
+    | Univesidad Icesi             |
+    | A00359333                    |
+    | Camilo Barrios               |
+    | Laboratorio 3                |    
+**/
+
+
 package ui;
 import model.*;
 import java.util.ArrayList;
@@ -49,7 +59,7 @@ public class Main{
 
 		int userInput=0;
 
-		while(userInput!=9){
+		while(userInput!=8){
 			showOptions();
 			userInput = reader.nextInt();
 			reader.nextLine();
@@ -68,8 +78,8 @@ public class Main{
 		System.out.println("How many pets does the client have?:");
 		int quantityPets = reader.nextInt();
 		reader.nextLine();
-		 for(int i = 0; i < quantityPets; i++){
-  System.out.println("...........................................................................");
+	    for(int i = 0; i < quantityPets; i++){
+System.out.println("...........................................................................");
 
 			System.out.println("Mascot "+(i+1)+":");
 
@@ -110,6 +120,9 @@ public class Main{
 
 			
 		else if(userInput==2){
+
+
+			
 			int error = 0;
 		    while (error == 0){
 			System.out.println("owner's identifier:");
@@ -130,19 +143,35 @@ public class Main{
 
 			}
 			else if(userInput==3){
+    System.out.println("Enter the ID of the client.");
+    String idclient = reader.nextLine ();
+    System.out.println("Enter the name of the animal");
+    String namesMascot = reader.nextLine();
+    System.out.println(myLittlePet.hospitalize(idclient, namesMascot));
 
+      
 
 
 
 			}
 			else if(userInput==4){
 
+    System.out.println(myLittlePet.showRooms());
 
 
-
-			}
+ }
 			else if(userInput==5){
-
+     System.out.println("Rig current day");
+     int actualDay = reader.nextInt();
+     reader.nextLine();
+     System.out.println("Rig current month.");
+     int actualMonth = reader.nextInt();
+     reader.nextLine();
+     System.out.println("Rig the current year");
+     int actualYear = reader.nextInt();
+     reader.nextLine();
+     myLittlePet.calculatedPay(actualDay, actualMonth, actualYear);
+     System.out.println(myLittlePet.calculatedPay(actualDay, actualMonth, actualYear));
 
 
 
@@ -150,26 +179,25 @@ public class Main{
 			}
 			else if (userInput==6){
 
+    System.out.println(myLittlePet.showClients());
+    System.out.println("Enter the client ID to register your animal.");
+    String idClientt = reader.nextLine();
+    System.out.println("Enter the pet NAME to high.");
+    String nampe = reader.nextLine();
+    System.out.println(myLittlePet.findToHospitalize(idClientt,nampe));
+    }
 
 
-
-
-
-
-			}
 			else if(userInput==7){
 
 
+    System.out.println("To open information");
+
+    System.out.println(myLittlePet.showClients());
 
 
 			}
-			else if (userInput==8){
-
-
-
-
-			}
-
+			
 
 
 
@@ -196,17 +224,17 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("2.Hospitalize the pet.\n");
   System.out.println("                                                                          |");
-  System.out.println("3. ");
+  System.out.println("3.Look for your pet in the hospital. ");
   System.out.println("                                                                          |");
-  System.out.println("4. ");
+  System.out.println("4.Information about mini roms availability");
   System.out.println("                                                                          |");
-  System.out.println("5. ");
+  System.out.println("5.He calculates total income");
   System.out.println("                                                                          |");
-  System.out.println("6. ");
+  System.out.println("6.Give the exit to the pet. ");
   System.out.println("                                                                          |");
-  System.out.println("7. ");
+  System.out.println("7.Imformacion clients. ");
   System.out.println("                                                                          |");
-  System.out.println("8. ");
+  System.out.println("8.Exit program. ");
   System.out.println("---------------------------------------------------------------------------");
 
 
@@ -269,7 +297,7 @@ Miniroom room7 = new Miniroom(true,7,history1);
 Miniroom room8 = new Miniroom(true,8,history2);
 Miniroom[] rooms = {room1,room2,room3,room4,room5,room6,room7,room8};
 
-Veterinary myLittlePet = new Veterinary();
+ myLittlePet = new Veterinary();
      	myLittlePet.setRooms(rooms);
 		myLittlePet.getHistories().add(history1);
 		myLittlePet.getHistories().add(history2);
@@ -278,12 +306,9 @@ Veterinary myLittlePet = new Veterinary();
 		myLittlePet.getClients().add(client2);
 		myLittlePet.getClients().add(client2);
 
+}
 
-
-
-
-
-
+}
 
 
 
@@ -294,11 +319,10 @@ Veterinary myLittlePet = new Veterinary();
 
 
 	
-} 
 
 
 
 
 
 
-}
+

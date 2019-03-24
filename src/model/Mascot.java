@@ -1,13 +1,14 @@
 package model;
+import java.util.ArrayList;
 
 public class Mascot{
 
 //Atrinutos 
     private String name;
-    private  static final char CAT = 'G';
-    private final static char DOG = 'P';
-    private static final char BIRD = 'A';
-    private final static char  OTHER= 'O';
+    public   static final char CAT = 'G';
+    public final static char DOG = 'P';
+    public  static final char BIRD = 'A';
+    public  final static char  OTHER= 'O';
     private double weight;
     private int age;
     private char type;
@@ -26,11 +27,11 @@ public Mascot(String name,double weight,int age,char type,HumanClient owner){
 	this.type=type;
 	this.owner=owner;
 
+
 }
 
-//gets and sets 
 
-public String getName(){
+public String getNamePet(){
 	return name;
 }
 public void setName(String name){
@@ -66,7 +67,21 @@ public HumanClient getOwner(){
 public void setOwner(HumanClient owner){
 	this.owner=owner;
 }
-
+public String showInfoPet(){
+ String msj = "";
+ msj += "`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\n";
+ msj += "Nombre : " + name + "\n";
+ msj += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+ msj += "Edad : " + age + "\n";
+ msj += "`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\n";
+ msj += "Peso: " + weight + "\n";
+ msj += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+ msj +="Tipo de Mascota: " + type + "\n";
+ msj += "`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\n";
+	return msj;
 
 
 }
+}
+
+

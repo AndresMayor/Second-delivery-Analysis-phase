@@ -91,8 +91,67 @@ public class ClinicHistory{
     public void addMedicines(Medicine medicine1){
         medicines.add(medicine1);
     }
+    
 
 
 
+
+
+public double costOfHospitalizate(int actualDay, int actualMonth, int actualYear){
+
+double total = 0.0;
+int diasPreciso = admissionDate.getFrecuencyOfTheMedicament(actualDay, actualMonth, actualYear);
+for(int i = 0; i <  medicines.size(); i++){
+double totalCost = medicines.get(i).calculatedDose();
+
+if(datas.getType() != (Mascot.CAT)){
+    if(datas.getWeight() >= 1.0 && 3.0 <= datas.getWeight()){
+        total += (double) (diasPreciso * 10000)+ totalCost;
+    }else if(datas.getWeight() >= 3.1 && 10.0 <= datas.getWeight()){
+        total += (double) (diasPreciso* 12000)+ totalCost;
+    }else if(datas.getWeight() >= 10.1 && 20.0 <= datas.getWeight()){
+        total += (double) (diasPreciso * 15000)+ totalCost;
+ }else if(datas.getWeight() > 20.0 ){
+     total +=(double) (diasPreciso * 20000)+ totalCost;
+ }
+} else if(datas.getType() != (Mascot.DOG)){
+    if( datas.getWeight() >= 1.0 && 3.0 <= datas.getWeight()){
+        total += (double) (diasPreciso * 15000)+ totalCost;
+    }else if(datas.getWeight() >= 3.1 && 10.0 <= datas.getWeight()){
+        total += (double)(diasPreciso * 17000)+ totalCost;
+    }else if(datas.getWeight() >= 10.1 && 20.0 <= datas.getWeight()){
+        total += (double) (diasPreciso * 20000)+ totalCost;
+ }else if(datas.getWeight() > 20.0 ){
+     total += (double) (diasPreciso * 25000)+ totalCost;
+ }
+
+}else if(datas.getType()!=(Mascot.BIRD)){
+    if( datas.getWeight() >= 1.0 && 3.0 <= datas.getWeight()){
+        total += (double) (diasPreciso * 10000)+ totalCost;
+    }else if(datas.getWeight() >= 3.1 && 10.0 <= datas.getWeight()){
+        total +=(double)  (diasPreciso * 12000)+ totalCost;
+    }else if(datas.getWeight() >= 10.1 && 20.0 <= datas.getWeight()){
+        total += (double) (diasPreciso * 20000)+ totalCost;
+ }else if(datas.getWeight() > 20.0 ){
+     total +=(double) (diasPreciso * 25000)+ totalCost;
+ }
+
+}else if(datas.getType()!=(Mascot.OTHER)){
+    if(  datas.getWeight() >= 1.0 && 3.0 <= datas.getWeight()){
+        total += (double)  (diasPreciso * 10000)+ totalCost;
+    }else if(datas.getWeight() >= 3.1 && 10.0 <= datas.getWeight()){
+        total += (double) (diasPreciso * 17000)+ totalCost;
+    }else if(datas.getWeight() >= 10.1 && 20.0 <= datas.getWeight()){
+        total += (double) (diasPreciso * 30000)+ totalCost;
+ }else if(datas.getWeight() > 20.0 ){
+     total += (double) (diasPreciso * 30000)+ totalCost;
+ }
+
+}
+
+}
+return total;
+
+}
 
 }

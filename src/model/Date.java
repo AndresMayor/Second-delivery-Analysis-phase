@@ -50,6 +50,20 @@ public class Date{
 		this.year=year;
 	}
 
+public int getFrecuencyOfTheMedicament(int actualDay , int actualMonth, int actualYear){
 
+	int dia = 0;
+	int diaActual = 0;
+	int diasCorridos = 0;
+	int diasPreciso = 0;
+
+	dia += (actualMonth - month)*30;
+	diaActual += (actualDay - dia);
+	diasCorridos += (actualYear - year)*360;
+
+	diasPreciso += (dia + diaActual + diasCorridos);
+
+  return diasPreciso;
+}
 
 }

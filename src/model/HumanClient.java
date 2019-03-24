@@ -83,7 +83,7 @@ public class HumanClient{
 		String msg = "";
 		int position = 1;
 		for(int i = 0; i < mascots.size(); i++){
-			msg += position+". "+mascots.get(i).getName()+"\n";
+			msg += position+". "+mascots.get(i).getNamePet()+"\n";
 		}
 		return msg;
 	}
@@ -91,6 +91,41 @@ public class HumanClient{
 
 
 
+public Mascot findPet(String petName){
+
+	Mascot andy = null;
+	boolean found = false;
+
+	for(int i = 0; i<mascots.size() && !found; i++){
+
+		if(mascots.get(i).getNamePet().equals(petName)){
+			andy = mascots.get(i);
+			found = true;
+		}
+
+	}
+
+	return andy;
+}
+
+
+public String infoClient(){
+String msj = "";
+msj += "+--------------------------------------------------------------+\n";
+msj += "|  Nombre del CLiente: " + name + "\n";
+msj += "| iD del Cliente: " + iD+ "\n";
+msj += "| Direccion de residencia: " + address + "\n";
+msj += "| Numero de contacto: " + telePhone + "\n";
+msj += "+--------------------------------------------------------------+\n";
+
+int j = 0;
+for(int i = 0; i<mascots.size(); i++){
+	++j;
+msj += "Pet"+ j + "";
+msj += mascots.get(i).showInfoPet();
+}
+return msj;
+}
 
 
 }

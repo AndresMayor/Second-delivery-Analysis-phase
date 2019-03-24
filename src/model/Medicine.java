@@ -57,5 +57,15 @@ public double setFrecuency(){
 public void setFrecuency(double frecuency){
 	this.frecuency=frecuency;
 }
+public double calculatedDose(){
+double totalCost = 0.0;
+
+totalCost += dose * costDose;
+
+return totalCost;
+
+
+
+}
 
 }
