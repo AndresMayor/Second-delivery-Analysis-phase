@@ -34,7 +34,7 @@ public Mascot(String name,double weight,int age,char type,HumanClient owner){
 public String getNamePet(){
 	return name;
 }
-public void setName(String name){
+public void setNamePet(String name){
 	this.name=name;
 }
 

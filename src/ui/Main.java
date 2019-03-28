@@ -131,17 +131,55 @@ System.out.println("............................................................
 			System.out.println("¿What pet do you want to hospitalize?");
 			System.out.println(myLittlePet.namesMascots(theID));
 			int option = reader.nextInt();
-			error = 1;
+			reader.nextLine();
+            System.out.println("¿What are the symptoms?");
+				String sysmptoms = reader.nextLine();
+				System.out.println("¿What is the diagnostic?");
+				String diagnostic = reader.nextLine();
+                Mascot petsHos = myLittlePet.clint(theID).getMascots().get(option-1);
+				System.out.println("Day of join:");
+				int tDay = reader.nextInt();
+				reader.nextLine();
+				System.out.println("Month of join:");
+				int tMonth = reader.nextInt();
+				reader.nextLine();
+				System.out.println("Year of join:");
+				int tYear = reader.nextInt();
+				reader.nextLine();
+				Date today = new Date(tDay, tMonth, tYear);
+				ClinicHistory newClinic = new ClinicHistory(true, sysmptoms, diagnostic, petsHos , today, null);
+				System.out.println("¿How many medicines has the pet?");
+				int quantityMedicines = reader.nextInt();
+				reader.nextLine();
+				for(int i = 0; i < quantityMedicines; i++){
+					System.out.println("--------------------------------");
+					System.out.println("¿What is the name of the medicine?");
+					String theName = reader.nextLine();
+					System.out.println("¿How many doses of the medicine?");
+					double theDoses = reader.nextDouble();
+					reader.nextLine();
+					System.out.println("¿What is the cost by dose?");
+					double costByDose = reader.nextDouble();
+					reader.nextLine();
+					System.out.println("¿What is the frequency to take the medicine?");
+					double theFrequency = reader.nextDouble();
+					reader.nextLine();
+					Medicine temporalDrug = new Medicine(theName, theDoses, costByDose,theFrequency);
+					newClinic.addMedicines(temporalDrug);
+				}
+				myLittlePet.hospitalizeAPet(newClinic);
+				System.out.println("The pet was hospitalized successfully");
+				error = 1;
 			}
 			else{
-			System.out.println("The client wasn't finded, please enter the identifier again");
+				System.out.println("The client wasn't finded, please enter the identifier again");
 			}
-		}
-
-
-
-
 			}
+			}
+	
+
+
+	
 			else if(userInput==3){
     System.out.println("Enter the ID of the client.");
     String idclient = reader.nextLine ();
@@ -180,7 +218,7 @@ System.out.println("............................................................
 			else if (userInput==6){
 
     System.out.println(myLittlePet.showClients());
-    System.out.println("Enter the client ID to register your animal.");
+    System.out.println("Enter the customer's identification to exit with  the animal.");
     String idClientt = reader.nextLine();
     System.out.println("Enter the pet NAME to high.");
     String nampe = reader.nextLine();

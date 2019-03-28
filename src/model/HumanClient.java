@@ -91,14 +91,14 @@ public class HumanClient{
 
 
 
-public Mascot findPet(String petName){
+public Mascot findPet(String nampe){
 
 	Mascot andy = null;
 	boolean found = false;
 
 	for(int i = 0; i<mascots.size() && !found; i++){
 
-		if(mascots.get(i).getNamePet().equals(petName)){
+		if(mascots.get(i).getNamePet().equals(nampe)){
 			andy = mascots.get(i);
 			found = true;
 		}

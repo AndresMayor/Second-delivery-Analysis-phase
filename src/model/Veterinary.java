@@ -210,7 +210,7 @@ public String findToHospitalize(String idClientt, String nampe){
   String msg = "";
   Mascot andy = null;
   for(int i =0; i<clients.size() && andy==null; i++){
-    if(idClientt == clients.get(i).getID()){
+    if(idClientt .equals(clients.get(i).getID())){
         andy = clients.get(i).findPet(nampe);
         if(andy==null){
           msg = "El cliente no tiene una mascota con ese nombre";
@@ -233,8 +233,30 @@ public String showRooms(){
   }
   return msj;
 }
+public void hospitalizeAPet(ClinicHistory history1){
+  boolean roomAvailable = false;
+    for(int i = 0; !roomAvailable && i < rooms.length; i++){
+      if(rooms[i].getAvailability() == true){
+        rooms[i].setAvailability(false);
+        rooms[i].setHistory(history1);
+        roomAvailable = true;
+      }
+}
+}
 
 
-
+  public HumanClient clint(String id){
+    HumanClient client1 = null;
+    boolean clienteJ = false;
+    if(findCustomer(id) == true){
+      for(int i = 0; !clienteJ && i < clients.size(); i++){
+        if(id.equals(clients.get(i).getID())){
+          client1 = clients.get(i);
+          clienteJ = true;
+        }
+      }
+    }
+    return client1;
+  }
 
 }
