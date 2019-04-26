@@ -84,6 +84,7 @@ public class HumanClient{
 		int position = 1;
 		for(int i = 0; i < mascots.size(); i++){
 			msg += position+". "+mascots.get(i).getNamePet()+"\n";
+			position++;
 		}
 		return msg;
 	}

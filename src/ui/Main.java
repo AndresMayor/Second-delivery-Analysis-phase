@@ -59,7 +59,7 @@ public class Main{
 
 		int userInput=0;
 
-		while(userInput!=8){
+		while(userInput!=13){
 			showOptions();
 			userInput = reader.nextInt();
 			reader.nextLine();
@@ -199,17 +199,8 @@ System.out.println("............................................................
 
  }
 			else if(userInput==5){
-     System.out.println("Rig current day");
-     int actualDay = reader.nextInt();
-     reader.nextLine();
-     System.out.println("Rig current month.");
-     int actualMonth = reader.nextInt();
-     reader.nextLine();
-     System.out.println("Rig the current year");
-     int actualYear = reader.nextInt();
-     reader.nextLine();
-     myLittlePet.calculatedPay(actualDay, actualMonth, actualYear);
-     System.out.println(myLittlePet.calculatedPay(actualDay, actualMonth, actualYear));
+     System.out.println(myLittlePet.costOfHospitalizatee());
+     
 
 
 
@@ -235,8 +226,36 @@ System.out.println("............................................................
 
 
 			}
-			
+			else if (userInput==8){
 
+
+
+				System.out.println(myLittlePet.ingresService());
+
+			}
+			else if (userInput==9){
+
+
+                addServices();
+
+			}
+			else if (userInput==10){
+				System.out.println(myLittlePet.promedioIngresService());
+
+
+
+			}
+           else if (userInput==11){
+           					System.out.println(myLittlePet.ingresosTotalesDeLaVeterinaria());
+
+
+           }
+           else if (userInput==12){
+
+
+           	   	addDrugs();
+
+           }
 
 
 
@@ -258,7 +277,7 @@ public void showOptions(){
   System.out.println("---------------------------------------------------------------------------");
   System.out.println("PLEASE TYPE THE OPTION YOU WANT TO REVIEW.");
   System.out.println("                                                                          |");
-  System.out.println("1.Register Client and Pet.\n ");
+  System.out.println("1.Register Client and Pet.\n");
   System.out.println("                                                                          |");
   System.out.println("2.Hospitalize the pet.\n");
   System.out.println("                                                                          |");
@@ -272,7 +291,17 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("7.Imformacion clients. ");
   System.out.println("                                                                          |");
-  System.out.println("8.Exit program. ");
+
+  System.out.println("8.Ingresos por servicios                                                   ");
+
+  System.out.println("9.agregar servicio                                                         ");
+
+  System.out.println("10.promedio de ingresos por servicios                                      ");
+
+  System.out.println("11 ingresos totales                                                        ");
+  System.out.println("12 agregar medicina                                                        ");
+
+  System.out.println("13.Exit program. ");
   System.out.println("---------------------------------------------------------------------------");
 
 
@@ -325,14 +354,14 @@ history3.addMedicines(medicine4);
 
 //Status Minirooms
 
-Miniroom room1 = new Miniroom(false,1,null);
-Miniroom room2 = new Miniroom(false,2,null);
-Miniroom room3 = new Miniroom(false,3,null);
-Miniroom room4 = new Miniroom(false,4,null);
-Miniroom room5 = new Miniroom(true,5,history3);
-Miniroom room6 = new Miniroom(false,6,null);
-Miniroom room7 = new Miniroom(true,7,history1);
-Miniroom room8 = new Miniroom(true,8,history2);
+Miniroom room1 = new Miniroom(true,1,null);
+Miniroom room2 = new Miniroom(true,2,null);
+Miniroom room3 = new Miniroom(true,3,null);
+Miniroom room4 = new Miniroom(true,4,null);
+Miniroom room5 = new Miniroom(false,5,history3);
+Miniroom room6 = new Miniroom(true,6,null);
+Miniroom room7 = new Miniroom(false,7,history1);
+Miniroom room8 = new Miniroom(false,8,history2);
 Miniroom[] rooms = {room1,room2,room3,room4,room5,room6,room7,room8};
 
  myLittlePet = new Veterinary();
@@ -344,6 +373,100 @@ Miniroom[] rooms = {room1,room2,room3,room4,room5,room6,room7,room8};
 		myLittlePet.getClients().add(client2);
 		myLittlePet.getClients().add(client2);
 
+
+Date nnn = new Date (20,02,2018);
+Service service1 = new Service(Service.PET_BATHV,nnn,mascot1);
+myLittlePet.addService(service1);
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+//lab 4 add service 
+
+
+
+
+public void addServices (){
+    System.out.println("Type of the service ");
+    System.out.println("1.Pet bath in the veterinary. \n 2.Pet bath at home \n 3.Nail cutting \n 4.Dental prophylaxis \n 5.Vacine ");
+    int type   = reader.nextInt();
+    reader.nextLine();
+    String typeService="";
+    if (type ==1 ){
+    	typeService=Service.PET_BATHV;
+    }
+    else if (type==2){
+    	typeService=Service.PET_BATHD;
+    }
+    else if (type==3){
+    	typeService=Service.NAIL_CUTTING;
+    }
+    else if (type==4){
+    	typeService=Service.DENTA_PRO;
+    }
+    else if (type==5){
+
+    	typeService=Service.VACCINATIONS;
+    }
+
+     System.out.println("Day ");
+     int day  = reader.nextInt();
+     reader.nextLine();
+     System.out.println("Month");
+     int month = reader.nextInt();
+     reader.nextLine();
+     System.out.println("Year");
+     int year = reader.nextInt();
+     reader.nextLine();
+     System.out.println("Identifier Owner ");
+     String id = reader.nextLine();
+     
+
+     System.out.println(myLittlePet.returnClient(id).nameMascots());
+     int option =reader.nextInt();
+     reader.nextLine();
+
+     Mascot fiat =myLittlePet.returnClient(id).getMascots().get(option-1);
+
+
+
+     Date dateRealization = new Date (day,month,year);
+     Service service1 = new Service(typeService,dateRealization,fiat);
+
+   
+}
+public void addDrugs(){
+
+
+
+System.out.println("Nombre de la medicina ");
+		String name  = reader.nextLine();
+		System.out.println("Dosis ");
+		double dose  = reader.nextInt();
+		reader.nextLine();
+		System.out.println("Costo de la dosis ");
+		double costDose  =reader.nextInt();
+		reader.nextLine();
+		System.out.println("frecuencia de la dosis ");
+		double  frecuency =reader.nextInt();
+		reader.nextLine();
+        System.out.println("En que mini cuarto esta la mascota ");
+        System.out.println(myLittlePet.minucuartos());
+	    int number = reader.nextInt();
+		reader.nextLine();
+        System.out.println(myLittlePet.agregarmedicina(name,dose,costDose,frecuency,number));
 }
 
 }

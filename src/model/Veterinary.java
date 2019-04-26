@@ -17,6 +17,7 @@ public class Veterinary{
 private Miniroom[] rooms;
 private ArrayList<ClinicHistory> histories;
 private ArrayList<HumanClient> clients;
+private ArrayList<Service>services;
 
 
 //Constructor 
@@ -27,51 +28,104 @@ public Veterinary(){
 	rooms = new Miniroom[8];
 	histories = new ArrayList<ClinicHistory>();
 	clients = new ArrayList<HumanClient>();
+  services= new ArrayList<Service>();
 
 
 
 }
 
-//Get s And Set s
+
+/**
+ *Gets the rooms
+ *@return the rooms
+ */
 public Miniroom[] getRooms(){
 	return rooms;
 }
+
+/**
+  *Sets the rooms
+  *@param rooms the rooms
+  */
 public void setRooms(Miniroom[] rooms){
 	this.rooms=rooms;
 }
 
-
-
+/**
+*Gets the histories 
+*@return the histories of clinic histories 
+*/
 public ArrayList<ClinicHistory> getHistories (){
 	return histories;
 }
 
+
+/**
+ *Sets the histories 
+ *@param histories the histories 
+*/
 public void setHistories(ArrayList<ClinicHistory> histories){
 	this.histories= histories;
 }
 
-
-
+/**
+*Gets the human client 
+*@return the clients  
+*/
 public ArrayList<HumanClient> getClients(){
 	return clients;
 }
+
+/**
+ *Sets the Clients 
+ *@param clients  the human clients  
+*/
+
 public void setClients(ArrayList<HumanClient> clients){
 	this.clients=clients;
 }
 
+/**
+  *Gets the services
+  *@return services
+  */
+
+public ArrayList<Service> getServices(){
+  return services;
+}
+
+/**
+ *Sets the services 
+ *@param services the service   
+*/
+public void setServices(ArrayList<Service> services){
+  this.services=services;
+}
 
 
+/**
+  *To add new clinic histories to the record
+  *@param history1 the new clinic history to add
+  */
 
 public void addHistorys(ClinicHistory history1){
     histories.add(history1);
 }
 
-
+/**
+  *To add new customers
+  *@param cliente1  the new client
+  */
 public void addClients(HumanClient client1){
 		clients.add(client1);
 }
 
 
+  /**
+  *To check if a client is already registered
+  *@param iD the identifier of the client
+  *@return a boolean indicates if the client is already registered or not
+  */
 
 
 public boolean findCustomer(String iD){
@@ -146,6 +200,10 @@ public String hospitalize(String idclient, String nameMascot){
 
 
 
+  /**
+  *To return is there is a room available
+  *@return a boolean indicates if there is a room available or not
+  */
 
 public boolean avaibleRoom(){
 boolean f = false;
@@ -161,15 +219,6 @@ for(int i = 0; i < rooms.length; i++){
 
 
 
-public String calculatedPay(int actualDay, int actualMonth, int actualYear){
-  String msj = "";
- for(int i=0; i < histories.size(); i++){
-
-    msj += histories.get(i).costOfHospitalizate(actualDay, actualMonth, actualYear);
-
- }
- return msj;
-}
 
 
 
@@ -195,7 +244,7 @@ public String darAlta(Mascot mascotsNames){
           rooms[i].getHistory().setDatas(null);
           recorrido= true;
           rooms[i].setAvailability(true);
-          msj = "Se saco el animalito del cuarto";
+          msj = "Se saco La mascota del cuarto";
         }
       }
       else{
@@ -228,7 +277,7 @@ public String findToHospitalize(String idClientt, String nampe){
 
 public String showRooms(){
   String msj="";
-  for (int i =0; i <rooms.length;i++){
+  for ( int i =0; i <rooms.length;i++){
     msj+=rooms[i].showRoomInformation();
   }
   return msj;
@@ -259,4 +308,107 @@ public void hospitalizeAPet(ClinicHistory history1){
     return client1;
   }
 
+
+
+//lab 4
+public double ingresService(){
+
+double cost =0.0;
+
+for (int i=0;i<services.size();i++){
+
+
+  cost+=services.get(i).getCost();
+}
+
+return cost;
+
+
+
+}
+
+
+//lab4
+
+public void addService(Service service1){
+  services.add(service1);
+}
+
+
+//lab4
+
+
+public HumanClient returnClient(String idClient){
+boolean client =false ;
+HumanClient client1=null;
+  for (int i =0;i<clients.size() && !client ;i++){
+
+     if (findCustomer(idClient)&& clients.get(i).getID().equals(idClient)){
+
+         client1=clients.get(i);
+     }
+  }
+  return client1;
+}
+
+public double promedioIngresService(){
+
+
+  return ingresService()/services.size();
+}
+
+//lab 3 ingreso historia clinica 
+public double costOfHospitalizatee(){
+  double temp=0.0;
+
+
+  for (int i=0;i<histories.size();i++){
+    temp+=histories.get(i).hospitalizationCost();
+  }
+  for (int k=0; k<rooms.length ;k++){
+    if(rooms[k].getAvailability()==false){
+      temp+=rooms[k].hospitalizeCost();
+    } 
+  }
+  return temp;
+}
+//lab4
+
+public double ingresosTotalesDeLaVeterinaria(){
+  return promedioIngresService()+costOfHospitalizatee();
+}
+
+
+
+
+public String agregarmedicina(String name, double dose, double costDose, double frecuency,int  number){
+String msg="";
+boolean centinela=false ;
+  for (int i =0;i<rooms.length && !centinela; i++ ){
+
+    if (number==rooms[i].getNumMiniroom()){
+      
+       msg=rooms[i].drugHistry( name,  dose, costDose,  frecuency);
+  }
+}
+   if (centinela==false){
+    msg="el numero digitado es incorrecto";
+   }
+return msg;
+}
+
+public String minucuartos(){
+
+String msg="";
+
+
+
+
+for (int i=0;i<rooms.length;i++){
+  if (rooms[i].getAvailability()==false){
+    msg +=rooms[i].getNumMiniroom()+"\n";
+  }
+}
+  return msg;
+}
 }

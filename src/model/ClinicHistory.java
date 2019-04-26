@@ -1,6 +1,8 @@
 package model;
 import java.util.ArrayList;
-
+import java.util.*;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 public class ClinicHistory{
 
 //Atributos
@@ -93,65 +95,124 @@ public class ClinicHistory{
     }
     
 
+    public int daysHospitalized(){
+        int days = 0;
+        if(exitDate == null){
+            GregorianCalendar date = new GregorianCalendar(admissionDate.getYear(), admissionDate.getMonth() - 1, admissionDate.getDay());
+            GregorianCalendar actualDate = new GregorianCalendar();
+            while (true) {
+                if ((date.get(Calendar.DAY_OF_MONTH) == actualDate.get(Calendar.DAY_OF_MONTH))
+                    && (date.get(Calendar.MONTH) == actualDate.get(Calendar.MONTH))
+                    && (date.get(Calendar.YEAR) == actualDate.get(Calendar.YEAR))){
+                    break;
+                }
+                date.add(Calendar.DAY_OF_MONTH, 1);
+                days++;
+            }
+        }
+        else{
+            GregorianCalendar date = new GregorianCalendar(admissionDate.getYear(), admissionDate.getMonth() - 1, admissionDate.getDay());
+            GregorianCalendar actualDate = new GregorianCalendar(exitDate.getYear(), exitDate.getMonth() - 1, exitDate.getDay());
+            while (true) {
+                if ((date.get(Calendar.DAY_OF_MONTH) == actualDate.get(Calendar.DAY_OF_MONTH))
+                    && (date.get(Calendar.MONTH) == actualDate.get(Calendar.MONTH))
+                    && (date.get(Calendar.YEAR) == actualDate.get(Calendar.YEAR))){
+                    break;
+                }
+                date.add(Calendar.DAY_OF_MONTH, 1);
+                days++;
+            }
+        }
+        return days;
+    }
 
 
 
 
-public double costOfHospitalizate(int actualDay, int actualMonth, int actualYear){
 
-double total = 0.0;
-int diasPreciso = admissionDate.getFrecuencyOfTheMedicament(actualDay, actualMonth, actualYear);
-for(int i = 0; i <  medicines.size(); i++){
-double totalCost = medicines.get(i).calculatedDose();
 
-if(datas.getType() != (Mascot.CAT)){
-    if(datas.getWeight() >= 1.0 && 3.0 <= datas.getWeight()){
-        total += (double) (diasPreciso * 10000)+ totalCost;
-    }else if(datas.getWeight() >= 3.1 && 10.0 <= datas.getWeight()){
-        total += (double) (diasPreciso* 12000)+ totalCost;
-    }else if(datas.getWeight() >= 10.1 && 20.0 <= datas.getWeight()){
-        total += (double) (diasPreciso * 15000)+ totalCost;
- }else if(datas.getWeight() > 20.0 ){
-     total +=(double) (diasPreciso * 20000)+ totalCost;
- }
-} else if(datas.getType() != (Mascot.DOG)){
-    if( datas.getWeight() >= 1.0 && 3.0 <= datas.getWeight()){
-        total += (double) (diasPreciso * 15000)+ totalCost;
-    }else if(datas.getWeight() >= 3.1 && 10.0 <= datas.getWeight()){
-        total += (double)(diasPreciso * 17000)+ totalCost;
-    }else if(datas.getWeight() >= 10.1 && 20.0 <= datas.getWeight()){
-        total += (double) (diasPreciso * 20000)+ totalCost;
- }else if(datas.getWeight() > 20.0 ){
-     total += (double) (diasPreciso * 25000)+ totalCost;
- }
+public double hospitalizationCost(){
+        double theCost = 0.0;
+        if(datas.getType() == 'c'){
+            if(datas.getWeight() >= 1.0 && datas.getWeight() <= 3.0){
+                theCost = 10000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() >= 3.1 && datas.getWeight() <= 10.0){
+                theCost = 12000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() >= 10.1 && datas.getWeight() <= 20.0){
+                theCost = 15000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() > 20.0){
+                theCost = 20000.0*daysHospitalized();
+            }
+        }
+        else if(datas.getType() == 'd'){
+            if(datas.getWeight() >= 1.0 && datas.getWeight() <= 3.0){
+                theCost = 15000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() >= 3.1 && datas.getWeight() <= 10.0){
+                theCost = 17000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() >= 10.1 && datas.getWeight() <= 20.0){
+                theCost = 20000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() > 20.0){
+                theCost = 25000.0*daysHospitalized();
+            }
+        }
+        else if(datas.getType() == 'b'){
+            if(datas.getWeight() >= 1.0 && datas.getWeight() <= 3.0){
+                theCost = 10000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() >= 3.1 && datas.getWeight() <= 10.0){
+                theCost = 12000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() >= 10.1 && datas.getWeight() <= 20.0){
+                theCost = 20000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() > 20.0){
+                theCost = 25000.0*daysHospitalized();
+            }
+        }
+        else if(datas.getType() == 'o'){
+            if(datas.getWeight() >= 1.0 && datas.getWeight() <= 3.0){
+                theCost = 10000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() >= 3.1 && datas.getWeight() <= 10.0){
+                theCost = 17000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() >= 10.1 && datas.getWeight() <= 20.0){
+                theCost = 30000.0*daysHospitalized();
+            }
+            else if (datas.getWeight() > 20.0){
+                theCost = 33000.0*daysHospitalized();
+            }
+        
+        }
+        for(int i = 0; i < medicines.size(); i++){
+            theCost += medicines.get(i).calculatedDose();
+        }
+        return theCost;
+    }
 
-}else if(datas.getType()!=(Mascot.BIRD)){
-    if( datas.getWeight() >= 1.0 && 3.0 <= datas.getWeight()){
-        total += (double) (diasPreciso * 10000)+ totalCost;
-    }else if(datas.getWeight() >= 3.1 && 10.0 <= datas.getWeight()){
-        total +=(double)  (diasPreciso * 12000)+ totalCost;
-    }else if(datas.getWeight() >= 10.1 && 20.0 <= datas.getWeight()){
-        total += (double) (diasPreciso * 20000)+ totalCost;
- }else if(datas.getWeight() > 20.0 ){
-     total +=(double) (diasPreciso * 25000)+ totalCost;
- }
 
-}else if(datas.getType()!=(Mascot.OTHER)){
-    if(  datas.getWeight() >= 1.0 && 3.0 <= datas.getWeight()){
-        total += (double)  (diasPreciso * 10000)+ totalCost;
-    }else if(datas.getWeight() >= 3.1 && 10.0 <= datas.getWeight()){
-        total += (double) (diasPreciso * 17000)+ totalCost;
-    }else if(datas.getWeight() >= 10.1 && 20.0 <= datas.getWeight()){
-        total += (double) (diasPreciso * 30000)+ totalCost;
- }else if(datas.getWeight() > 20.0 ){
-     total += (double) (diasPreciso * 30000)+ totalCost;
- }
 
+public String addDrug(String name, double dose, double costDose, double frecuency){
+String msg ="";
+    if (name!=null ){
+   msg="Se pudo agregar";
+   Medicine drug = new Medicine(name,dose,costDose,frecuency);
+   medicines.add(drug);
+}
+   else{
+    msg="No se puedo Agregar la medicina";
+   }
+return msg;
+
+    }
 }
 
-}
-return total;
 
-}
 
-}
+

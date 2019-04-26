@@ -52,6 +52,13 @@ public int getNumMiniroom(){
 }
 
 
+
+
+public double hospitalizeCost(){
+	return history.hospitalizationCost();
+}
+
+
 public String showRoomInformation(){
 	String msj ="";
 
@@ -61,5 +68,25 @@ public String showRoomInformation(){
     msj +="````````````````````````````````````````````````````````\n";
 return msj;
 }
+
+public String drugHistry(String name, double dose, double costDose, double frecuency){
+
+
+String msg="";
+
+
+ msg=history.addDrug(name,  dose,  costDose, frecuency);
+
+
+     return msg;
+
+
+}
+
+
+
+
+
+
 
 }
