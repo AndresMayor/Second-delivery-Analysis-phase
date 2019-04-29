@@ -129,5 +129,15 @@ return msj;
 }
 
 
+
+
+
+
+
+	public void modificDatas(String address, String telePhone){
+		this.address = address;
+		this.telePhone=telePhone;
+	}
+
 }
 

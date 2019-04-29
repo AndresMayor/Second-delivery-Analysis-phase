@@ -59,7 +59,7 @@ public class Main{
 
 		int userInput=0;
 
-		while(userInput!=13){
+		while(userInput!=15){
 			showOptions();
 			userInput = reader.nextInt();
 			reader.nextLine();
@@ -97,6 +97,10 @@ System.out.println("............................................................
 			int mascotAge = reader.nextInt();
 			reader.nextLine();
 
+			System.out.println("Mascot Heigth:");
+			double  mascotHeigth = reader.nextDouble();
+			reader.nextLine();
+
 			System.out.println("Mascot type(G for cat, P for dog, A for bird, O for others):");
 			char mascotType = reader.next().charAt(0);
 
@@ -105,7 +109,7 @@ System.out.println("............................................................
 
 			//public Mascot(String name,double weight,int age,char type,HumanClient owner){
 
-			Mascot mascotPrincipal = new Mascot(mascotName, mascotWeight, mascotAge, mascotType, clientPrincipal);
+			Mascot mascotPrincipal = new Mascot(mascotName, mascotWeight, mascotAge, mascotType, clientPrincipal,mascotHeigth);
 
 			clientPrincipal.addMascots(mascotPrincipal);
 		}
@@ -256,6 +260,23 @@ System.out.println("............................................................
            	   	addDrugs();
 
            }
+           else if (userInput==13){
+
+           	
+System.out.println("Digite el id del cliente por favor");
+String  id  = reader.nextLine();
+
+
+System.out.println("Digite la dirección que quiere actualizar por favor");
+String andress = reader.nextLine();
+
+System.out.println("Por favor digite el telefono que quiere actualizar por favor");
+String telephone = reader.nextLine();
+
+System.out.println(myLittlePet.modificDatas(id,andress,telephone));
+
+
+           }
 
 
 
@@ -299,9 +320,11 @@ public void showOptions(){
   System.out.println("10.promedio de ingresos por servicios                                      ");
 
   System.out.println("11 ingresos totales                                                        ");
+
   System.out.println("12 agregar medicina                                                        ");
 
-  System.out.println("13.Exit program. ");
+  System.out.println("13.Modificar datos del cliente");
+  
   System.out.println("---------------------------------------------------------------------------");
 
 
@@ -318,9 +341,9 @@ HumanClient client1 = new HumanClient("Andres","122","Cra 33a #29-56","3237985")
 HumanClient client2 = new HumanClient("Richard","123","Cra 33a #29-47","3213211");
 //public Mascot(String name,double weight,int age,char type,HumanClient owner){
 
-Mascot mascot1 = new Mascot("Bonny",20.0,3,'G',client1);
-Mascot mascot2 = new Mascot("Zeus",22.0,5,'P',client2);
-Mascot mascot3 = new Mascot("Hercules",30.0,6,'P',client2);
+Mascot mascot1 = new Mascot("Bonny",20.0,3,'G',client1,1.10);
+Mascot mascot2 = new Mascot("Zeus",22.0,5,'P',client2,80.0);
+Mascot mascot3 = new Mascot("Hercules",30.0,6,'P',client2,1.20);
 client1.getMascots().add(mascot1);
 mascot1.setOwner(client1);
 client2.getMascots().add(mascot2);

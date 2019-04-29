@@ -397,12 +397,12 @@ boolean centinela=false ;
 return msg;
 }
 
+
+
+
 public String minucuartos(){
 
 String msg="";
-
-
-
 
 for (int i=0;i<rooms.length;i++){
   if (rooms[i].getAvailability()==false){
@@ -411,4 +411,35 @@ for (int i=0;i<rooms.length;i++){
 }
   return msg;
 }
+
+
+
+
+
+
+public String modificDatas(String id , String andress,String telephone){
+  String msg="No se pudo modificar los datos del cliente";
+  boolean centinela=false;
+
+  for (int i=0;i<clients.size() && !centinela ;i++){
+
+    if ( id.equals(clients.get(i).getID()) ){
+
+     clients.get(i).modificDatas(andress, telephone);
+      centinela = true;
+      
+
+    }
+  }
+
+  if (centinela){
+    msg="Se actualizaron los datos del cliente";
+  }
+return msg ;
+
+
+}
+
+
+
 }
