@@ -393,6 +393,7 @@ boolean centinela=false ;
     if (number==rooms[i].getNumMiniroom()){
       
        msg=rooms[i].drugHistry( name,  dose, costDose,  frecuency);
+       centinela=true;
   }
 }
    if (centinela==false){
@@ -480,27 +481,77 @@ return total/service;
 
 
 
-public void addNotesToHospitalization(String clientIdentify, String nameClientPe, String notes){
-
+public String addNotesToHospitalization(String clientIdentify, String nameClientPe, String notes){
+String msg ="";
 boolean perro = false;
 
 for(int i = 0; i < rooms.length && perro == false; i++){
-      if(rooms[i].history.getDatas().getOwner().getID().equals(clientIdentify)){
-    if(rooms[i].history.getDatas().getNamePet().equals(nameClientPe)){
-
+  if(rooms[i].getHistory()!=null){
+ /*System.out.println(rooms[i].getHistory().getDatas().getOwner().getID() + clientIdentify);
+  System.out.println(rooms[i].getHistory().getDatas().getNamePet() + nameClientPe);*/
+      if(rooms[i].getHistory().getDatas().getOwner().getID().equals(clientIdentify) && rooms[i].getHistory().getDatas().getNamePet().equals(nameClientPe)){
          rooms[i].addNotesToPet(notes);
+        msg = rooms[i].getHistory().getDiagnosis();
          perro = true;
 
     }
-    
+    }
   }
+
+
+  return msg;
   }
+
+
+
+public String calculateFecha(Date n,Date t ){
+String reports="";
+int days =0;
+int dayss=0;
+GregorianCalendar date = new GregorianCalendar(n.getYear(), n.getMonth() - 1, n.getDay());
+GregorianCalendar actualDate = new GregorianCalendar(0,0,1);
+while (true) {
+if ((date.get(Calendar.DAY_OF_MONTH) == actualDate.get(Calendar.DAY_OF_MONTH))
+&& (date.get(Calendar.MONTH) == actualDate.get(Calendar.MONTH))
+&& (date.get(Calendar.YEAR) == actualDate.get(Calendar.YEAR))){
+   break;
+}
+  actualDate.add(Calendar.DAY_OF_MONTH, 1);
+   days++;
+}
+
+GregorianCalendar inicio = new GregorianCalendar(t.getYear(), t.getMonth() - 1, t.getDay());
+GregorianCalendar finall = new GregorianCalendar(0,0,1);
+while (true) {
+if ((inicio.get(Calendar.DAY_OF_MONTH) == finall.get(Calendar.DAY_OF_MONTH))
+&& (inicio.get(Calendar.MONTH) == finall.get(Calendar.MONTH))
+&& (inicio.get(Calendar.YEAR) == finall.get(Calendar.YEAR))){
+   break;
+}
+  finall.add(Calendar.DAY_OF_MONTH, 1);
+   dayss++;
+}
+
+
+for (int i=0;i<services.size();i++){
+  if (services.get(i).calculateDate()>=days && services.get(i).calculateDate()<=dayss){
+
+    reports+=services.get(i).toString();
+  }
+
+}
+return reports;
 }
 
 
 
 
- }
+
+
+}
+
+
+
 
 
 

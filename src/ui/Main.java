@@ -312,10 +312,48 @@ else if (userInput==15){
   System.out.println("Digite las notas que desea agregar al diagnostico del paciente");
   String notes = reader.nextLine();
 
-  myLittlePet.addNotesToHospitalization(clientIdentify,nameClientPet,notes);
+  System.out.println(myLittlePet.addNotesToHospitalization(clientIdentify,nameClientPet,notes));
 
 
 
+
+}
+else if (userInput==16){
+System.out.println("Digite La Fecha de inicio");
+
+System.out.println("Digite el dia  ");
+int  dia   = reader.nextInt();
+reader.nextLine();
+
+
+System.out.println("Digite el mes  ");
+int  mes    = reader.nextInt();
+reader.nextLine();
+
+
+System.out.println("Digite el anio ");
+int  anio    = reader.nextInt();
+reader.nextLine();
+Date n = new Date (dia,mes,anio);
+
+System.out.println("Digite La Fecha final");
+
+System.out.println("Digite el dia ");
+int  di   = reader.nextInt();
+reader.nextLine();
+
+
+System.out.println("Digite el mes  ");
+int  me    = reader.nextInt();
+reader.nextLine();
+
+
+System.out.println("Digite el anio ");
+int  ani    = reader.nextInt();
+reader.nextLine();
+
+Date t = new Date (di,me,ani);
+System.out.println(myLittlePet.calculateFecha(n,t));
 }
 
 
@@ -351,7 +389,6 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("7.Imformacion clients. ");
   System.out.println("                                                                          |");
-
   System.out.println("8.Ingresos por servicios                                                   ");
 
   System.out.println("9.agregar servicio                                                         ");
@@ -363,6 +400,9 @@ public void showOptions(){
   System.out.println("12 agregar medicina                                                        ");
 
   System.out.println("13.Modificar datos del cliente");
+
+  System.out.println("14.Promedio de ingresos de la veterinaria en una semana                    ");
+
   
   System.out.println("---------------------------------------------------------------------------");
 
@@ -521,7 +561,7 @@ public void addDrugs(){
 
 
 
-System.out.println("Nombre de la medicina ");
+    	System.out.println("Nombre de la medicina ");
 		String name  = reader.nextLine();
 		System.out.println("Dosis ");
 		double dose  = reader.nextInt();

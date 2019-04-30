@@ -282,11 +282,17 @@ String msg ="";
 return msg;
 
     }
+
+
+
+
+
     public void addNotesToHospitalizationFatality(String notes){
 
 
-      this.diagnosis+=notes;
+      this.diagnosis="\n"+notes;
 //setNotes(notes);
+
 
 
 
@@ -294,8 +300,16 @@ return msg;
 //clientWithHisto.get((clientWithHisto.size()-1 )).addNotes(notes);
 
 }
+public String showInformationDiagnosis(){
+    String msj ="";
+
+    msj +="````````````````````````````````````````````````````````\n";
+    msj += "Nombre de la mascota "+""+getDatas().getNamePet()+"\n";
+    msj += "Su Diagnostico es :"+diagnosis+"\n";
+    msj +="````````````````````````````````````````````````````````\n";
+return msj;
 }
 
 
-
+}
 

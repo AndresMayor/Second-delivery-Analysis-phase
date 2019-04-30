@@ -201,6 +201,22 @@ return days;
 }
 
 
+public String toString(){
+  String msg="";
+
+  msg="----------------------------------------------------"+"\n";
+  msg+=  " Tipo de servicio: "+type+"\n";
+  msg+= " Costo del servicio: "+cost+"\n";
+  msg+= " Nombre de la mascota: "+idPet+"\n";
+  msg+= " Identificacion del dueño: "+idOwner+"\n";
+  msg+= " Fecha de realización: "+realization.getDay()+"/"+realization.getMonth()+"/"+realization.getYear()+"\n";
+  msg+="----------------------------------------------------";
+
+return msg ;
+
+
+}
+
 
 
 

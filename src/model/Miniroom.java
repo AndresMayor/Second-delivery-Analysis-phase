@@ -14,7 +14,7 @@ public class Miniroom{
 //Relations 
 
 
-public  ClinicHistory history;
+private ClinicHistory history;
 
 
 /**
