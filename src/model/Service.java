@@ -1,6 +1,10 @@
 package model;
-
-
+import java.util.*;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+/**
+*This class contains the information of the services
+*/
 public class Service {
 
 
@@ -139,13 +143,13 @@ public Mascot getTheMascot(){
 public void setTheMascot(Mascot theMascot){
 	this.theMascot=theMascot;
 }
+
 /**
   Calculates the cost of the service<br>
   pre: the service was created before and the type must be not null<br>
   post: the cost is calculated<br> 
   @return the cost of the type service 
 */
-
 public double costService(){
 
     double theCost=0.0;
@@ -173,6 +177,28 @@ return theCost;
 
 }
 
+/**
+*to calculate the days realization service<br>
+*pre: the clinic history was created before and the join date must be not null<br>
+*post: the date of the service made since the beginning of the time is obtained <br>
+*@return the days realization of the service
+ */
+public int calculateDate(){
+
+  int days =0;
+GregorianCalendar date = new GregorianCalendar(realization.getYear(), realization.getMonth() - 1, realization.getDay());
+GregorianCalendar actualDate = new GregorianCalendar(0,0,1);
+      while (true) {
+if ((date.get(Calendar.DAY_OF_MONTH) == actualDate.get(Calendar.DAY_OF_MONTH))
+&& (date.get(Calendar.MONTH) == actualDate.get(Calendar.MONTH))
+&& (date.get(Calendar.YEAR) == actualDate.get(Calendar.YEAR))){
+    break;
+  }
+actualDate.add(Calendar.DAY_OF_MONTH, 1);
+ days++;
+ }
+return days;
+}
 
 
 

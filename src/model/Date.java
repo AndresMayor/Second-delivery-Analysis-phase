@@ -1,69 +1,73 @@
 package model;
-
+/**
+*This class contains the information of the dates
+*/
 public class Date{
 
-//Atributos 
+//Atributes 
 
 
 	private int day;
 	private int month;
 	private int year;
-
-
-
-
-//Metodo Constructor
-
+/**
+*Date constructor
+*@param day the day
+*@param month the month
+*@param year the year
+*/
 	public Date (int day, int month,int year){
 		this.day=day;
 		this.month=month;
 		this.year=year;
 	}
-
-
-
-//get and setters
-
-
+/**
+*Gets the day
+*@return the day
+*/
 
 	public int getDay(){
 		return day;
 	}
+/**
+*Sets the day
+*@param day the day
+*/
 	public void setDay(int day){
 		this.day=day;
 	}
 
 
-	public int getMonth(){
+/**
+*Gets the month
+*@return the month
+*/
+    public int getMonth(){
 		return month;
 	}
+/**
+*Sets the month
+*@param month the month
+*/
 	public void setMonth(int month){
 		this.month=month;
 	}
 
-
+/**
+*Gets the year
+*@return the year
+*/
 	public int getYear(){
 		return year;
 	}
+/**
+*Sets the year
+*@param year the year
+*/
 
 	public void setYear(int year){
 		this.year=year;
 	}
 
-public int getFrecuencyOfTheMedicament(int actualDay , int actualMonth, int actualYear){
-
-	int dia = 0;
-	int diaActual = 0;
-	int diasCorridos = 0;
-	int diasPreciso = 0;
-
-	dia += (actualMonth - month)*30;
-	diaActual += (actualDay - dia);
-	diasCorridos += (actualYear - year)*360;
-
-	diasPreciso += (dia + diaActual + diasCorridos);
-
-  return diasPreciso;
-}
 
 }

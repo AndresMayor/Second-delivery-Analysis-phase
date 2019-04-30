@@ -59,7 +59,7 @@ public class Main{
 
 		int userInput=0;
 
-		while(userInput!=15){
+		while(userInput!=20){
 			showOptions();
 			userInput = reader.nextInt();
 			reader.nextLine();
@@ -277,7 +277,46 @@ System.out.println(myLittlePet.modificDatas(id,andress,telephone));
 
 
            }
+           else if (userInput==14){
 
+
+
+System.out.println("Digite el dia ");
+int  dia   = reader.nextInt();
+reader.nextLine();
+
+
+System.out.println("Digite el mes  ");
+int  mes    = reader.nextInt();
+reader.nextLine();
+
+
+System.out.println("Digite el anio ");
+int  anio    = reader.nextInt();
+reader.nextLine();
+
+Date n = new Date (dia,mes,anio);
+System.out.println(myLittlePet.calculateFecha(n));
+
+           }
+
+else if (userInput==15){
+  System.out.println("Por favor digite el id del cliente del animalito");
+  String clientIdentify = reader.nextLine();
+  
+
+  System.out.println("Por favor digite el nombre del animal del dueño");
+  String nameClientPet = reader.nextLine();
+
+
+  System.out.println("Digite las notas que desea agregar al diagnostico del paciente");
+  String notes = reader.nextLine();
+
+  myLittlePet.addNotesToHospitalization(clientIdentify,nameClientPet,notes);
+
+
+
+}
 
 
 
@@ -397,9 +436,17 @@ Miniroom[] rooms = {room1,room2,room3,room4,room5,room6,room7,room8};
 		myLittlePet.getClients().add(client2);
 
 
-Date nnn = new Date (20,02,2018);
-Service service1 = new Service(Service.PET_BATHV,nnn,mascot1);
+Date fecha = new Date (20,02,2018);
+Service service1 = new Service(Service.PET_BATHV,fecha,mascot2);
 myLittlePet.addService(service1);
+
+Date fecha1 = new Date (20,05,2018);
+Service service2 = new Service(Service.NAIL_CUTTING,fecha1,mascot2);
+myLittlePet.addService(service2);
+
+Date fecha2 = new Date (15,04,2016);
+Service service3 = new Service(Service.VACCINATIONS,fecha2,mascot3);
+myLittlePet.addService(service3);
 
 
 

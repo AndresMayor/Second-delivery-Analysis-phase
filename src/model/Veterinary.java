@@ -7,22 +7,24 @@
 **/
 package model;
 import java.util.ArrayList;
-
+import java.util.*;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+/**
+*This is the main class in the model, it contains all the information for the veterinary my little pet.
+*/
 public class Veterinary{
 
-
 //Relations 
-
 
 private Miniroom[] rooms;
 private ArrayList<ClinicHistory> histories;
 private ArrayList<HumanClient> clients;
 private ArrayList<Service>services;
 
-
-//Constructor 
-
-
+/**
+*Veterinary constructor
+*/
 public Veterinary(){
 
 	rooms = new Miniroom[8];
@@ -113,7 +115,7 @@ public void addHistorys(ClinicHistory history1){
 }
 
 /**
-  *To add new customers
+  *To add new clients 
   *@param cliente1  the new client
   */
 public void addClients(HumanClient client1){
@@ -126,8 +128,6 @@ public void addClients(HumanClient client1){
   *@param iD the identifier of the client
   *@return a boolean indicates if the client is already registered or not
   */
-
-
 public boolean findCustomer(String iD){
 		boolean foundClient= false;
 		for(int i = 0; !foundClient && i < clients.size(); i++){
@@ -292,7 +292,11 @@ public void hospitalizeAPet(ClinicHistory history1){
       }
 }
 }
-
+/**
+*to return the client
+*@param id the identifier of the client
+*@return the client that is wanted
+*/
 
   public HumanClient clint(String id){
     HumanClient client1 = null;
@@ -442,4 +446,68 @@ return msg ;
 
 
 
+
+
+
+public double calculateFecha(Date n ){
+
+int service=0;
+double total=0.0;
+int days =0;
+int dayss=0;
+GregorianCalendar date = new GregorianCalendar(n.getYear(), n.getMonth() - 1, n.getDay());
+GregorianCalendar actualDate = new GregorianCalendar(0,0,1);
+while (true) {
+if ((date.get(Calendar.DAY_OF_MONTH) == actualDate.get(Calendar.DAY_OF_MONTH))
+&& (date.get(Calendar.MONTH) == actualDate.get(Calendar.MONTH))
+&& (date.get(Calendar.YEAR) == actualDate.get(Calendar.YEAR))){
+   break;
 }
+  actualDate.add(Calendar.DAY_OF_MONTH, 1);
+   days++;
+}
+dayss =  days+7;
+
+for (int i=0; i<services.size();i++){
+   if(services.get(i).calculateDate()>=days && services.get(i).calculateDate()<= dayss){
+       service++;
+       total+=services.get(i).costService();
+  }
+}
+return total/service;
+}
+
+
+
+
+public void addNotesToHospitalization(String clientIdentify, String nameClientPe, String notes){
+
+boolean perro = false;
+
+for(int i = 0; i < rooms.length && perro == false; i++){
+      if(rooms[i].history.getDatas().getOwner().getID().equals(clientIdentify)){
+    if(rooms[i].history.getDatas().getNamePet().equals(nameClientPe)){
+
+         rooms[i].addNotesToPet(notes);
+         perro = true;
+
+    }
+    
+  }
+  }
+}
+
+
+
+
+ }
+
+
+
+
+
+
+
+
+
+

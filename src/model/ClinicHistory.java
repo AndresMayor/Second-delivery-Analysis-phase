@@ -3,13 +3,16 @@ import java.util.ArrayList;
 import java.util.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
+/**
+*This class contains the information of the clinical histories of the pets
+*/
+
 public class ClinicHistory{
 
-//Atributos
+//Atributes
     private boolean status;
     private String symptom;
     private String diagnosis;
-
 //Relations 
 
     private ArrayList<Medicine> medicines;
@@ -18,7 +21,15 @@ public class ClinicHistory{
     private Mascot datas;
 
 
-//Metodo Constructor 
+/**
+*ClinicHistory constructor
+*@param status the status of the history. this param must be not null.
+*@param symptoms the symptomsof the mascot. this param must be not null.
+*@param diagnostic the diagnostic of the mascot. this param must be not null.
+*@param datas the mascot this param must be not null.
+*@param admissionDate the hospitalized day . this param must be not null.
+*@param exitDate the discharge date. this param could be null.
+*/
 
 
     public ClinicHistory(boolean status,String symptom,String diagnosis,Mascot datas,Date admissionDate,Date exitDate){
@@ -32,69 +43,122 @@ public class ClinicHistory{
     }
 
 
-//get and set
 
+/**
+*Gets the status
+*@return the status of the history
+*/
     public boolean getStatus(){
     	return status;
     }
+/**
+*Sets the status
+*@param status the history's status
+*/
     public void setStatus(boolean status){
     	this.status=status;
     }
-
-
+/**
+*Gets the symptoms
+*@return the symptoms of the pet
+*/
     public String getSymptom(){
     	return symptom;
     }
+/**
+*Sets the symptom
+*@param symptom the symptom of the mascot
+*/
+
     public void  setSymptom(String symptom){
     	this.symptom=symptom;
 
     }
-
+/**
+*Gets the diagnostic
+*@return the clinic diagnosis
+ */
 
     public String getDiagnosis(){
     	return diagnosis;
     }
+/**
+*Sets the diagnostic
+*@param diagnosis the clinic diagnostic
+*/
     public void setDiagnosis(String diagnosis){
     	this.diagnosis=diagnosis;
     }
-
-
-
+/**
+*Gets the medicines
+*@return the medicines
+*/
     public ArrayList<Medicine> getMedicines(){
     	return medicines;
     }
+/**
+*Set the medicines
+*@param medicines the medicines
+*/
     public void setMedicines(ArrayList<Medicine> medicines){
     	this.medicines=medicines;
     }
 
-
+/**
+ *Gets the Admission Date
+*@return the admission date 
+*/
     public Date getAdmissionDate(){
     	return admissionDate;
     }
+/**
+*Sets the join date
+*@param admissionDate the admission Date
+*/
     public void setAdmissionDate(Date admissionDate){
     	this.admissionDate=admissionDate;
     }
-
-
+/**
+*Gets the exit date
+*@return the exit date
+*/
     public Date getExitDate(){
     	return exitDate;
     }
+/**
+*Sets the exit date
+*@param exitDate the exit date
+*/
     public void setExitDate(Date exitDate){
     	this.exitDate=exitDate;
     }
-
-
+/**
+*Gets the mascot
+*@return the datas of the mascot 
+*/
     public Mascot getDatas(){
     	return datas;
     }
+/**
+*Sets the pet
+*@param datas the pet
+*/
     public void setDatas(Mascot datas){
     	this.datas=datas;
     }
+/**
+*Add new medication to the clinical history
+*@param medicine1 the medicine to add
+*/
     public void addMedicines(Medicine medicine1){
         medicines.add(medicine1);
     }
-    
-
+    /**
+*to calculate the days hospitalized<br>
+*pre: the clinic history was created before and the join date must be not null<br>
+*post: the days hospitalized is calculated<br>
+*@return the days hospitalized
+ */
     public int daysHospitalized(){
         int days = 0;
         if(exitDate == null){
@@ -127,10 +191,10 @@ public class ClinicHistory{
     }
 
 
-
-
-
-
+/**
+*to calculate the cost of the hospitalization service
+*@return the cost of the hospitalized service
+*/
 public double hospitalizationCost(){
         double theCost = 0.0;
         if(datas.getType() == 'c'){
@@ -195,9 +259,16 @@ public double hospitalizationCost(){
         }
         return theCost;
     }
-
-
-
+/**
+*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.<br>
+*pre: The patient clinic story must be not null.<br>
+*post: New medicines were added to the patient clinic story.<br>
+*@param name The medicine name. This param must be not null.
+*@param dose The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned. This param must be not null.
+*@param costDose The medicine cost by each dose. This param could be empty.
+*@param frequency The frequency of medicine application. This param could be empty.
+*@return A message that indiques if medicine was added to the patient clinic story
+*/
 public String addDrug(String name, double dose, double costDose, double frecuency){
 String msg ="";
     if (name!=null ){
@@ -211,6 +282,18 @@ String msg ="";
 return msg;
 
     }
+    public void addNotesToHospitalizationFatality(String notes){
+
+
+      this.diagnosis+=notes;
+//setNotes(notes);
+
+
+
+
+//clientWithHisto.get((clientWithHisto.size()-1 )).addNotes(notes);
+
+}
 }
 
 

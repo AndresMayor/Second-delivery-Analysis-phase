@@ -1,9 +1,11 @@
 package model;
 import java.util.ArrayList;
-
+/**
+*This class contains the information of the pets
+*/
 public class Mascot{
 
-//Atrinutos 
+//Atributes 
     private String name;
     public   static final char CAT = 'G';
     public final static char DOG = 'P';
@@ -17,22 +19,16 @@ public class Mascot{
 
 
 //Relations
-
     private HumanClient owner;
 
-//Metodo Constructor
-
-
-
 /**
-	*Mascot constructor
-	*@param name the Mascot name
-	*@param weight the Mascot weight
-	*@param age the Mascot age
-    *@param type the Mascot type
-	*@param owner the owner of the animal. This param must be not null
-	*/
-
+*Mascot constructor
+*@param name the Mascot name
+*@param weight the Mascot weight
+*@param age the Mascot age
+*@param type the Mascot type
+*@param owner the owner of the animal. This param must be not null
+*/
 public Mascot(String name,double weight,int age,char type,HumanClient owner,double height){
 	this.name=name;
 	this.weight=weight;
@@ -55,8 +51,6 @@ public Mascot(String name,double weight,int age,char type,HumanClient owner,doub
 
 public String getNamePet(){
 	return name;
-
-
 }
 
 /**
@@ -67,12 +61,10 @@ public void setNamePet(String name){
 	this.name=name;
 }
 
-
 /**
   *Gets the Weight
   *@return the mascot weight
 */
-
 public double getWeight(){
 	return weight;
 }
@@ -134,12 +126,12 @@ public void setOwner(HumanClient owner){
 }
 
 /**
-    metod :idOwnerr
-	*to return the identifier of the owner<br>
-	*pre: The mascot  was created before and the owner must be not null<br>
-	*post: the owner's identifier is delivered<br>
-	*@return the ID of the owner
-	*/
+metod :idOwnerr
+*to return the identifier of the owner<br>
+*pre: The mascot  was created before and the owner must be not null<br>
+*post: the owner's identifier is delivered<br>
+*@return the ID of the owner
+*/
 public String idOwerr(){
 	return owner.getID();
 }
@@ -166,25 +158,15 @@ public String showInfoPet(){
 
 
 }
-
-
-
 /**
 *Description This method allows to calculate the body mass index for a pet.
 *pre: The pet was created before and its attributes height and weight are not null neither height must be zero.
 *post: The BMI is calculated.
 *@return The pet body mass index. Returns -1 if the height is zero  due to the division on zero does not exist.
 */
-
 public double calculateIMC(){
-
-	return weight/(height * height);
-	}
-
-
-
-
-
+    return weight/(height * height);
+}
 
 
 
