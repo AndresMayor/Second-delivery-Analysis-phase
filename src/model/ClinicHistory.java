@@ -283,6 +283,7 @@ return msg;
 
     }
 
+
 public void addNotesToHospitalizationFatality(String notes){
 
       this.diagnosis+= "\n"+notes;

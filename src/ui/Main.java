@@ -384,12 +384,15 @@ HumanClient client2 = new HumanClient("Richard","123","Cra 33a #29-47","3213211"
 Mascot mascot1 = new Mascot("Bonny",20.0,3,'G',client1,1.10);
 Mascot mascot2 = new Mascot("Zeus",22.0,5,'P',client2,80.0);
 Mascot mascot3 = new Mascot("Hercules",30.0,6,'P',client2,1.20);
+Mascot mascot4 = new Mascot("Thomas",30.0,4,'P',client1,1.04)
 client1.getMascots().add(mascot1);
 mascot1.setOwner(client1);
 client2.getMascots().add(mascot2);
-mascot1.setOwner(client2);
+mascot2.setOwner(client2);
 client2.getMascots().add(mascot3);
-mascot1.setOwner(client2);
+mascot3.setOwner(client2);
+client1.getMascots().add(mascot4);
+mascot4.setOwner(client1);
 
 Date admissionDate1 = new Date (22,03,2018);
 Date exitDate1 = new Date(10,03,2019);
