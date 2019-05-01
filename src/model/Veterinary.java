@@ -487,8 +487,6 @@ boolean perro = false;
 
 for(int i = 0; i < rooms.length && perro == false; i++){
   if(rooms[i].getHistory()!=null){
- /*System.out.println(rooms[i].getHistory().getDatas().getOwner().getID() + clientIdentify);
-  System.out.println(rooms[i].getHistory().getDatas().getNamePet() + nameClientPe);*/
       if(rooms[i].getHistory().getDatas().getOwner().getID().equals(clientIdentify) && rooms[i].getHistory().getDatas().getNamePet().equals(nameClientPe)){
          rooms[i].addNotesToPet(notes);
         msg = rooms[i].getHistory().getDiagnosis();
@@ -543,7 +541,24 @@ for (int i=0;i<services.size();i++){
 return reports;
 }
 
+public String addSymptoms(String clientIdentify, String nameClientPe, String symptoms){
+String msg ="";
+boolean perro = false;
 
+for(int i = 0; i < rooms.length && perro == false; i++){
+  if(rooms[i].getHistory()!=null){
+      if(rooms[i].getHistory().getDatas().getOwner().getID().equals(clientIdentify) && rooms[i].getHistory().getDatas().getNamePet().equals(nameClientPe)){
+         rooms[i].addSymptomsToPet(symptoms);
+        msg = rooms[i].getHistory().getSymptom();
+         perro = true;
+
+    }
+    }
+  }
+
+
+  return msg;
+  }
 
 
 

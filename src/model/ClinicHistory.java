@@ -24,7 +24,7 @@ public class ClinicHistory{
 /**
 *ClinicHistory constructor
 *@param status the status of the history. this param must be not null.
-*@param symptoms the symptomsof the mascot. this param must be not null.
+*@param symptom the symptomsof the mascot. this param must be not null.
 *@param diagnostic the diagnostic of the mascot. this param must be not null.
 *@param datas the mascot this param must be not null.
 *@param admissionDate the hospitalized day . this param must be not null.
@@ -283,33 +283,18 @@ return msg;
 
     }
 
+public void addNotesToHospitalizationFatality(String notes){
 
-
-
-
-    public void addNotesToHospitalizationFatality(String notes){
-
-
-      this.diagnosis="\n"+notes;
-//setNotes(notes);
-
-
-
-
-
-//clientWithHisto.get((clientWithHisto.size()-1 )).addNotes(notes);
-
-}
-public String showInformationDiagnosis(){
-    String msj ="";
-
-    msj +="````````````````````````````````````````````````````````\n";
-    msj += "Nombre de la mascota "+""+getDatas().getNamePet()+"\n";
-    msj += "Su Diagnostico es :"+diagnosis+"\n";
-    msj +="````````````````````````````````````````````````````````\n";
-return msj;
-}
-
+      this.diagnosis+= "\n"+notes;
 
 }
 
+
+public void addSymptoms(String symptoms){
+
+
+      this.symptom+="\n"+symptoms;
+
+
+}
+}

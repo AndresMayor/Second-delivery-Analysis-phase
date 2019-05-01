@@ -124,5 +124,10 @@ public void addNotesToPet(String notes){
 }
 
 
-}
+public void addSymptomsToPet(String symptoms){
 
+  history.addSymptoms(symptoms);
+
+
+}
+}
