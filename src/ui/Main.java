@@ -220,7 +220,7 @@ System.out.println("............................................................
 			}
     else if (userInput==11){
 
-    System.out.println(myLittlePet.ingresosTotalesDeLaVeterinaria());
+    System.out.println(myLittlePet.ingressTotalsVeter());
 
            }
 
@@ -516,7 +516,7 @@ public void addDrugs(){
     System.out.println(myLittlePet.minucuartos());
     int number = reader.nextInt();
 	reader.nextLine();
-    System.out.println(myLittlePet.agregarmedicina(name,dose,costDose,frecuency,number));
+    System.out.println(myLittlePet.addMedicine(name,dose,costDose,frecuency,number));
 }
 
 }

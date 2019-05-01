@@ -376,16 +376,16 @@ public double costOfHospitalizatee(){
   }
   return temp;
 }
-//lab4
 
-public double ingresosTotalesDeLaVeterinaria(){
+
+public double ingressTotalsVeter(){
   return promedioIngresService()+costOfHospitalizatee();
 }
 
 
 
 
-public String agregarmedicina(String name, double dose, double costDose, double frecuency,int  number){
+public String addMedicine(String name, double dose, double costDose, double frecuency,int  number){
 String msg="";
 boolean centinela=false ;
   for (int i =0;i<rooms.length && !centinela; i++ ){
