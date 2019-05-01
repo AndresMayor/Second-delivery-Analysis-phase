@@ -232,14 +232,14 @@ System.out.println("............................................................
 
      else if (userInput==13){
           	
-System.out.println("Digite el id del cliente por favor");
+System.out.println("Enter the customer ID please");
 String  id  = reader.nextLine();
 
 
-System.out.println("Digite la dirección que quiere actualizar por favor");
+System.out.println("Type the address you want to update please");
 String andress = reader.nextLine();
 
-System.out.println("Por favor digite el telefono que quiere actualizar por favor");
+System.out.println("Please type the phone you want to update please");
 String telephone = reader.nextLine();
 
 System.out.println(myLittlePet.modificDatas(id,andress,telephone));
@@ -248,15 +248,15 @@ System.out.println(myLittlePet.modificDatas(id,andress,telephone));
 
       else if (userInput==14){
 
-System.out.println("Digite el dia ");
+System.out.println("Enter the day:");
 int  dia   = reader.nextInt();
 reader.nextLine();
 
-System.out.println("Digite el mes  ");
+System.out.println("Enter the month:");
 int  mes    = reader.nextInt();
 reader.nextLine();
 
-System.out.println("Digite el anio ");
+System.out.println("Enter the year: ");
 int  anio    = reader.nextInt();
 reader.nextLine();
 
@@ -267,13 +267,13 @@ System.out.println(myLittlePet.calculateFecha(n));
 
       else if (userInput==15){
 
-  System.out.println("Digite el ID del dueño de la mascota           ");
+  System.out.println("Enter the ID of the pet owner: ");
   String clientIdentify = reader.nextLine();
   
-  System.out.println("Digite el nombre de la mascota                 ");
+  System.out.println("Type the name of the pet: ");
   String nameClientPet = reader.nextLine();
 
-  System.out.println("Digite las notas que desea agregar al diagnostico del paciente");
+  System.out.println("Type the notes you want to add to the patient's diagnosis: ");
   String notes = reader.nextLine();
 
   System.out.println(myLittlePet.addNotesToHospitalization(clientIdentify,nameClientPet,notes));
@@ -281,13 +281,13 @@ System.out.println(myLittlePet.calculateFecha(n));
 }
       else if (userInput==16){
 
-  System.out.println("Digite el ID del dueño de la mascota:           ");
+  System.out.println("Enter the ID of the pet owner:");
   String clientIdentify = reader.nextLine();
   
-  System.out.println("Digite el nombre de la mascota:                 ");
+  System.out.println("Type the name of the pet:       ");
   String nameClientPet = reader.nextLine();
 
-  System.out.println("Digite los sintomas  que desea agregar:         ");
+  System.out.println("Enter the symptoms you want to add:  ");
   String notes = reader.nextLine();
 
   System.out.println(myLittlePet.addSymptoms(clientIdentify,nameClientPet,notes));
@@ -296,26 +296,26 @@ System.out.println(myLittlePet.calculateFecha(n));
 
       else if (userInput==17){
 
-    System.out.println("DIGITE LA FECHA DE INICIO");
-    System.out.println("Digite el dia:  ");
+    System.out.println("ENTER THE START DATE");
+    System.out.println("Enter the day :  ");
     int  dia   = reader.nextInt();
     reader.nextLine();
-    System.out.println("Digite el mes:  ");
+    System.out.println("Enter the month:");
     int  mes    = reader.nextInt();
     reader.nextLine();
-    System.out.println("Digite el año: ");
+    System.out.println("Enter the year ");
     int  anio    = reader.nextInt();
     reader.nextLine();
     Date n = new Date (dia,mes,anio);
 
     System.out.println("Digite La Fecha final");
-    System.out.println("Digite el dia: ");
+    System.out.println("Enter the day:");
     int  di   = reader.nextInt();
     reader.nextLine();
-    System.out.println("Digite el mes:  ");
+    System.out.println("Enter the month ");
     int  me    = reader.nextInt();
     reader.nextLine();
-    System.out.println("Digite el año: ");
+    System.out.println("Enter the year ");
     int  ani    = reader.nextInt();
     reader.nextLine();
     Date t = new Date (di,me,ani);
@@ -345,27 +345,27 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("7.Imformacion clients.                                                     ");
   System.out.println("                                                                          |");
-  System.out.println("8.Ingresos por servicios                                                   ");
+  System.out.println("8.Service revenues.                                                        ");
   System.out.println("                                                                          |");
-  System.out.println("9.agregar servicio                                                         ");
+  System.out.println("9.Add service.                                                             ");
   System.out.println("                                                                          |");
-  System.out.println("10.promedio de ingresos por servicios                                      ");
+  System.out.println("10.average income from services.                                           ");
   System.out.println("                                                                          |");
-  System.out.println("11 ingresos totales                                                        ");
+  System.out.println("11 Total revenue.                                                          ");
   System.out.println("                                                                          |");
-  System.out.println("12 agregar medicina                                                        ");
+  System.out.println("12 Add medicine.                                                           ");
   System.out.println("                                                                          |");
-  System.out.println("13.Modificar datos del cliente                                             ");
+  System.out.println("13.Modify customer data.                                                   ");
   System.out.println("                                                                          |");
-  System.out.println("14.Promedio de ingresos de la veterinaria en una semana                    ");
+  System.out.println("14.Average income of the veterinarian in a week.                           ");
   System.out.println("                                                                          |");
-  System.out.println("15.Agregar notas al diagnostico de la mascota.                             ");
+  System.out.println("15.Add notes to the diagnosis of the pet.                                  ");
   System.out.println("                                                                          |");
-  System.out.println("16.Agregar nuevos  sintomas                                                ");
+  System.out.println("16.Add new symptoms.                                                       ");
   System.out.println("                                                                          |");
-  System.out.println("17.Promedio de ingresos de la veterinaria entre una  fecha inicial y final ");
+  System.out.println("17.Average veterinary income between an initial and final date.            ");
   System.out.println("                                                                          |");
-  System.out.println("18.Salir del programa.                                                     ");
+  System.out.println("18.Exit the program.                                                       ");
   System.out.println("                                                                          |");
   System.out.println("---------------------------------------------------------------------------");
 
@@ -501,18 +501,18 @@ public void addServices (){
 }
 public void addDrugs(){
 
-    System.out.println("Nombre de la medicina ");
+    System.out.println("Name of the medicine: ");
 	String name  = reader.nextLine();
-	System.out.println("Dosis ");
+	System.out.println("Dose: ");
 	double dose  = reader.nextInt();
 	reader.nextLine();
-	System.out.println("Costo de la dosis ");
+	System.out.println("Cost of the dose: ");
 	double costDose  =reader.nextInt();
 	reader.nextLine();
-	System.out.println("frecuencia de la dosis ");
+	System.out.println("Dose Frequency: ");
 	double  frecuency =reader.nextInt();
 	reader.nextLine();
-    System.out.println("En que mini cuarto esta la mascota ");
+    System.out.println("In what mini room is the pet?   ");
     System.out.println(myLittlePet.minucuartos());
     int number = reader.nextInt();
 	reader.nextLine();

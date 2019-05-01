@@ -205,11 +205,11 @@ public String toString(){
   String msg="";
 
   msg="----------------------------------------------------"+"\n";
-  msg+=  " Tipo de servicio: "+type+"\n";
-  msg+= " Costo del servicio: "+cost+"\n";
-  msg+= " Nombre de la mascota: "+idPet+"\n";
-  msg+= " Identificacion del dueño: "+idOwner+"\n";
-  msg+= " Fecha de realización: "+realization.getDay()+"/"+realization.getMonth()+"/"+realization.getYear()+"\n";
+  msg+=  " Type of service: "+type+"\n";
+  msg+= " Cost of service: "+cost+"\n";
+  msg+= " The pet's name: "+idPet+"\n";
+  msg+= " Identification of the owner: "+idOwner+"\n";
+  msg+= " Date of realization: "+realization.getDay()+"/"+realization.getMonth()+"/"+realization.getYear()+"\n";
   msg+="----------------------------------------------------";
 
 return msg ;

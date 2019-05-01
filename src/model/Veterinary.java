@@ -167,11 +167,11 @@ public String namesMascots(String iD){
         rooms[i].getHistory().setDatas(current);
         rooms[i].setAvailability(false);
 
-        msg = "Se agrego exitosamente a "+current.getNamePet()+" en el cuarto " + (i+1);
+        msg = "It was added successfully to "+current.getNamePet()+" in the room" + (i+1);
       }
     }
     if(!found){
-      msg = "No se pudo hospitalizar porque no se encontro un cuarto vacio.";
+      msg = "You can not be hospitalized because you did not find an empty room.";
     }
 
     return msg;
@@ -397,7 +397,7 @@ boolean centinela=false ;
   }
 }
    if (centinela==false){
-    msg="el numero digitado es incorrecto";
+    msg="The number entered is incorrect. ";
    }
 return msg;
 }
@@ -423,7 +423,7 @@ for (int i=0;i<rooms.length;i++){
 
 
 public String modificDatas(String id , String andress,String telephone){
-  String msg="No se pudo modificar los datos del cliente";
+  String msg="The customer data could not be modified";
   boolean centinela=false;
 
   for (int i=0;i<clients.size() && !centinela ;i++){
@@ -438,7 +438,7 @@ public String modificDatas(String id , String andress,String telephone){
   }
 
   if (centinela){
-    msg="Se actualizaron los datos del cliente";
+    msg="Updated customer data";
   }
 return msg ;
 

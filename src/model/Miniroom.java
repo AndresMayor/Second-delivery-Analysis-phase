@@ -104,8 +104,8 @@ public String showRoomInformation(){
 	String msj ="";
 
 	msj +="````````````````````````````````````````````````````````\n";
-	msj += "Si esta ocupado :\n 1. True Y si no esta ocupado 2. False: "+""+availability+"\n";
-    msj += "El numero del mini cuarto es :"+numMiniroom+"\n";
+	msj += "If he is busy\n 1. And if it is not busy 2. False: "+""+availability+"\n";
+    msj += "The mini room number is:"+numMiniroom+"\n";
     msj +="````````````````````````````````````````````````````````\n";
 return msj;
 }

@@ -164,10 +164,10 @@ public Mascot findPet(String nampe){
 public String infoClient(){
 String msj = "";
 msj += "+--------------------------------------------------------------+\n";
-msj += "|  Nombre del CLiente: " + name + "\n";
-msj += "| iD del Cliente: " + iD+ "\n";
-msj += "| Direccion de residencia: " + address + "\n";
-msj += "| Numero de contacto: " + telePhone + "\n";
+msj += "| Customer name: " + name + "\n";
+msj += "| iD of the Client: " + iD+ "\n";
+msj += "| Residence address: " + address + "\n";
+msj += "| Contact number: " + telePhone + "\n";
 msj += "+--------------------------------------------------------------+\n";
 
 int j = 0;
