@@ -283,13 +283,26 @@ return msg;
 
     }
 
+
+
+/**
+*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
+*pre: The patient clinic story must be not null.
+*post: New notes were added to the possible diagnostic in the patient clinic story.
+*@param notes  notes of possible diagnostic. This param must be not null.
+*/
 public void addNotesToHospitalizationFatality(String notes){
 
       this.diagnosis+= "\n"+notes;
 
 }
 
-
+/**
+*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
+*pre: The patient clinic story must be not null.
+*post: A new symptom were added to the patient clinic story.
+*@param symptoms new symptom presented. This param must be not null.
+*/
 public void addSymptoms(String symptoms){
 
 

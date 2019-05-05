@@ -138,7 +138,11 @@ public boolean findCustomer(String iD){
 		return foundClient;
 }
 
-
+/**
+*This method looks for a client's pets
+*@param iD id of the client 
+*@return message about customers' pets
+*/
 
 public String namesMascots(String iD){
 		String message = "";
@@ -155,6 +159,12 @@ public String namesMascots(String iD){
 }
 
 
+/**
+*The method evaluates if it can be added to the mini room
+*pre: the mini rooms can not be null
+*@param current Mascot  the pet to compare it
+*@return msg Yes message could be added
+*/
   public String addPetToAvailableRoom (Mascot current){
 
     String msg = "";
@@ -179,6 +189,13 @@ public String namesMascots(String iD){
 
 
 
+/**
+*This method looks for if you can hospitalize a pet
+*pre: customers can not be null
+*@param idclient id of teh client 
+*@param nameMascot  name of the pet 
+*@return message yes you can hospitalize
+*/
 public String hospitalize(String idclient, String nameMascot){
 
   String msg = "";
@@ -187,7 +204,7 @@ public String hospitalize(String idclient, String nameMascot){
     if(clients.get(i).getID() == idclient){
         andy = clients.get(i).findPet(nameMascot);
         if(andy==null){
-          msg = "El cliente no tiene una mascota con ese nombre";
+          msg = "The client does not have a pet with that name";
         }
     }
   }
@@ -217,13 +234,11 @@ for(int i = 0; i < rooms.length; i++){
   return f;
 }
 
-
-
-
-
-
-//nn
-
+/**
+*Description This method of Customer information.
+*pre: Customers can not be null. 
+*@return msj customer information.
+*/
 public String showClients(){
   String msj = "";
   msj += clients.size();
@@ -235,6 +250,13 @@ public String showClients(){
 
 
 }
+/**
+*Description This method discharges a hospitalized pet
+*pre: The mini room can not be null
+*@param macotsNames name of the mascot
+*@return message confirming if the animal was removed
+*/
+
 public String darAlta(Mascot mascotsNames){
  boolean recorrido = false;
  String msj = "";
@@ -244,17 +266,23 @@ public String darAlta(Mascot mascotsNames){
           rooms[i].getHistory().setDatas(null);
           recorrido= true;
           rooms[i].setAvailability(true);
-          msj = "Se saco La mascota del cuarto";
+          msj = "The mascot of the room was removed";
         }
       }
       else{
-        msj = "No se encontro su animal hospitalizado";
+        msj = "Your hospitalized animal was not found";
       }
     }
     return msj;
   }
 
-
+/**
+*Description evaluate if a pet can be hospitalized
+*pre: customers can not be null
+*@param idClientt id of the client
+*@param nampe name of the pet 
+*@return message if you can hospitalize
+*/
 public String findToHospitalize(String idClientt, String nampe){
   String msg = "";
   Mascot andy = null;
@@ -273,7 +301,11 @@ public String findToHospitalize(String idClientt, String nampe){
   return msg;
 }
 
-
+/**
+*Description This method of room information
+*pre: the rooms can not be null
+*@return message about the information of mini rooms
+*/
 
 public String showRooms(){
   String msj="";
@@ -282,6 +314,13 @@ public String showRooms(){
   }
   return msj;
 }
+
+
+
+/**
+*This method hospitalizes a pet
+*@param history1 clinic history of the pet 
+*/
 public void hospitalizeAPet(ClinicHistory history1){
   boolean roomAvailable = false;
     for(int i = 0; !roomAvailable && i < rooms.length; i++){
@@ -312,9 +351,11 @@ public void hospitalizeAPet(ClinicHistory history1){
     return client1;
   }
 
+/**
+*This method calculates income from services.
+*@return cost of the services.
+*/
 
-
-//lab 4
 public double ingresService(){
 
 double cost =0.0;
@@ -331,9 +372,10 @@ return cost;
 
 }
 
-
-//lab4
-
+/**
+*This method serves to add services.
+*@param service1 service.
+*/
 public void addService(Service service1){
   services.add(service1);
 }
@@ -355,16 +397,21 @@ HumanClient client1=null;
   return client1;
 }
 
+/**
+*This method calculates ythe average income from services 
+*@return The value if the average income from services.
+*/
 public double promedioIngresService(){
-
 
   return ingresService()/services.size();
 }
 
-//lab 3 ingreso historia clinica 
+/**
+*This method calculates the cost for a hospitalization 
+*@return cost of hospitalization
+*/
 public double costOfHospitalizatee(){
   double temp=0.0;
-
 
   for (int i=0;i<histories.size();i++){
     temp+=histories.get(i).hospitalizationCost();
@@ -377,14 +424,25 @@ public double costOfHospitalizatee(){
   return temp;
 }
 
-
+/**
+*This method calculates the total income of the veterinary
+*@return total cost of the veterinary
+*/
 public double ingressTotalsVeter(){
   return promedioIngresService()+costOfHospitalizatee();
 }
 
-
-
-
+/**
+*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
+*pre: The patient clinic story must be not null.
+*post: New medicines were added to the patient clinic story.
+*@param name  medicine name. This param must be not null.
+*@param dose  medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned.
+*@param costDose medicine cost by each dose. This param could be empty.
+*@param frecuency  frequency of medicine application. This param could be empty.
+*@param number number of the mini room 
+*@return A message that indiques if medicine was added to the patient clinic story
+*/
 public String addMedicine(String name, double dose, double costDose, double frecuency,int  number){
 String msg="";
 boolean centinela=false ;
@@ -402,8 +460,11 @@ boolean centinela=false ;
 return msg;
 }
 
-
-
+/**
+*this method allows to know the mini occupied rooms
+*pre:the mini rooms can not be null
+*@return occupied mini-rooms
+*/
 
 public String minucuartos(){
 
@@ -419,9 +480,14 @@ for (int i=0;i<rooms.length;i++){
 
 
 
-
-
-
+/**
+*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+*pre: The client was created before.
+*post: The address and /or phone number of the client is updated.
+*@param andress  new address of the client. This param could be empty.
+*@param telephone new phone number of the client. This param could be empty.
+*@param id iD of the client 
+*/
 public String modificDatas(String id , String andress,String telephone){
   String msg="The customer data could not be modified";
   boolean centinela=false;
@@ -445,7 +511,11 @@ return msg ;
 
 }
 
-
+/**
+*this method allows us to calculate the average income for services in a week
+*@param n date week
+*@return average income in a week
+*/
 
 
 
@@ -478,7 +548,14 @@ for (int i=0; i<services.size();i++){
 return total/service;
 }
 
-
+/**
+*this method allows to find the mini room and add the note
+*pre: the mini rooms can not be null<br>
+*@param clientIdentify id of te client 
+*@param nameClientPe  name of the mascot 
+*@param notes new notes
+*@return the new diagnostics
+*/
 
 
 public String addNotesToHospitalization(String clientIdentify, String nameClientPe, String notes){
@@ -540,6 +617,14 @@ for (int i=0;i<services.size();i++){
 }
 return reports;
 }
+
+
+/**
+*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
+*pre: The patient clinic story must be not null.
+*post: A new symptom were added to the patient clinic story.
+*@param symptoms  new symptom presented. This param must be not null.
+*/
 
 public String addSymptoms(String clientIdentify, String nameClientPe, String symptoms){
 String msg ="";

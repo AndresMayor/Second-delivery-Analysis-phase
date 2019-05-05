@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"model","l":"ClinicHistory"},{"p":"model","l":"Date"},{"p":"model","l":"HumanClient"},{"p":"ui","l":"Main"},{"p":"model","l":"Mascot"},{"p":"model","l":"Medicine"},{"p":"model","l":"Miniroom"},{"p":"model","l":"Service"},{"p":"model","l":"Veterinary"}]

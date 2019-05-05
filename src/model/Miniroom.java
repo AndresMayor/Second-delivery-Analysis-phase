@@ -109,6 +109,12 @@ public String showRoomInformation(){
     msj +="````````````````````````````````````````````````````````\n";
 return msj;
 }
+/**
+*@param name 
+*@param dose 
+*@param costDose 
+*@param frecuency 
+*/
 
 public String drugHistry(String name, double dose, double costDose, double frecuency){
   String msg="";
@@ -116,12 +122,22 @@ public String drugHistry(String name, double dose, double costDose, double frecu
   return msg;
 
 }
+/**
+*This method is useful to be able to add a new notes 
+*@param notes new notes
+*/
 
 
 public void addNotesToPet(String notes){
 
   history.addNotesToHospitalizationFatality(notes);
 }
+
+
+/**
+*This method is useful to be able to add a new symptom
+*@param symptoms new symptoms
+*/
 
 
 public void addSymptomsToPet(String symptoms){
