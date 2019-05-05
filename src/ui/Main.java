@@ -12,7 +12,9 @@ package ui;
 import model.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+*This class contains information from the main 
+*/
 
 
 
@@ -29,7 +31,9 @@ public class Main{
 		init();
 		reader = new Scanner(System.in);
 	} 
-
+/**
+*Start of the program 
+*/
 	public static void main(String[] args){
 		Main m = new Main();
 		m.menu();
@@ -39,7 +43,9 @@ public class Main{
 	public void menu(){
 		welcome();
 	}
-
+/**
+*This method is used to create the title of the progam 
+*/
 	public void welcome(){
 
     System.out.println(".............................................................................");
@@ -48,6 +54,9 @@ public class Main{
 
 	}
 
+/**
+*This method is used to select a menu option
+*/
 	public void showMenu(){
 
 		int userInput=0;
@@ -326,7 +335,9 @@ System.out.println(myLittlePet.calculateFecha(n));
 }
 }
 
-
+/**
+*This method serves to show the user the options panel
+*/
 public void showOptions(){
   System.out.println("---------------------------------------------------------------------------");
   System.out.println("PLEASE TYPE THE OPTION YOU WANT TO REVIEW."                                 );
@@ -371,6 +382,9 @@ public void showOptions(){
 
 
 }
+/**
+*This method is used to create objects by deafault 
+*/
 
 public void init(){
 
@@ -453,6 +467,10 @@ Service service3 = new Service(Service.VACCINATIONS,fecha2,mascot3);
 myLittlePet.addService(service3);
 }
 
+
+/**
+*this method is used to request information to the user to add a new service 
+*/
 public void addServices (){
     System.out.println("Type of the service ");
     System.out.println("1.Pet bath in the veterinary. \n 2.Pet bath at home \n 3.Nail cutting \n 4.Dental prophylaxis \n 5.Vacine ");
@@ -499,6 +517,11 @@ public void addServices (){
 
    
 }
+
+
+/**
+*this method is used to request information to the user to add a medicine 
+*/
 public void addDrugs(){
 
     System.out.println("Name of the medicine: ");
