@@ -200,7 +200,11 @@ actualDate.add(Calendar.DAY_OF_MONTH, 1);
 return days;
 }
 
-
+/**
+*This method is used to give the reports of the services given some dates
+*pre: the services can not be null
+*@return service reports message
+*/
 public String toString(){
   String msg="";
 

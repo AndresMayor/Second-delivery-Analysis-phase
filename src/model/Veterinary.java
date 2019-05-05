@@ -516,10 +516,6 @@ return msg ;
 *@param n date week
 *@return average income in a week
 */
-
-
-
-
 public double calculateFecha(Date n ){
 
 int service=0;
@@ -556,8 +552,6 @@ return total/service;
 *@param notes new notes
 *@return the new diagnostics
 */
-
-
 public String addNotesToHospitalization(String clientIdentify, String nameClientPe, String notes){
 String msg ="";
 boolean perro = false;
@@ -577,8 +571,12 @@ for(int i = 0; i < rooms.length && perro == false; i++){
   return msg;
   }
 
-
-
+/**
+*This method is used to give the report an initial and final date
+*@param n initial date 
+*@param t final date 
+*@return reports service report given those dates
+*/
 public String calculateFecha(Date n,Date t ){
 String reports="";
 int days =0;
@@ -640,25 +638,8 @@ for(int i = 0; i < rooms.length && perro == false; i++){
     }
     }
   }
-
-
   return msg;
   }
 
 
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
